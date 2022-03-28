@@ -1,17 +1,16 @@
 // IDEA DE PROYECTO FINAL: Aplicación que al ingresar tu sueldo te organiza la plata y te ayuda a ahorrar.
-let inicio = parseInt(prompt("Qué operación desea hacer?\n 1. Agregar dinero. \n 2. Retirar dinero. \n 3. Ver saldo \n 4. Ver ahorros \n 5. Agregar dinero en ahorros. \n 6. Quitar dinero de ahorros \n 7. Salir"))
-
-let saldo = 0
-let ahorros = 0
+let inicio = parseInt(prompt("Qué operación desea hacer?\n 1. Agregar dinero. \n 2. Retirar dinero. \n 3. Ver saldo \n 4. Ver ahorros \n 5. Agregar dinero en ahorros. \n 6. Quitar dinero de ahorros \n 7. Salir"));
+let saldo = 0;
+let ahorros = 0;
+let num = 0;
+function calc(porcentajeNum){
+    ahorros += num * porcentajeNum;
+    saldo -= num * porcentajeNum;
+}
 while (inicio != 7){
-    let num = 0
-    let option = 0
-    let valor = 0
-    let porcentaje = true
-    function calc(porcentajeNum){
-        ahorros += num * porcentajeNum;
-        saldo -= num * porcentajeNum;
-    }
+    let option = 0;
+    let valor = 0;
+    let porcentaje = true;
     switch(inicio){
         case 1:
             num = parseInt(prompt("Actualmente su saldo es de " + saldo + " Pesos." + " Ingrese la cantidad de dinero que quiere ingresar: "));
@@ -39,9 +38,9 @@ while (inicio != 7){
                             if (valor > 0 && valor <= 100){
                                 valor = valor / 100;
                                 calc(valor);
-                                porcentaje = false
+                                porcentaje = false;
                             }else{
-                                alert("Por favor ingrese un valor entre 1 y 100.")
+                                alert("Por favor ingrese un valor entre 1 y 100.");
                             }
                         }
                         porcentaje = true;
@@ -53,14 +52,14 @@ while (inicio != 7){
             }else{
                 alert('Ingrese un valor.');
             }
-            alert('Ahora su saldo disponible es de: ' + saldo + " Pesos.")
+            alert('Ahora su saldo disponible es de: ' + saldo + " Pesos.");
             break;
         case 2:
             num = parseInt(prompt("Cuánto dinero quiere retirar del saldo? \n Disponible para retirar: "+ saldo + ' Pesos.'));
             if (num <= saldo && num > 0){
                 saldo -= num;
             }else{
-                alert('Usted no tiene esa cantidad.')
+                alert('Usted no tiene esa cantidad.');
             }
             break;
 
@@ -76,7 +75,7 @@ while (inicio != 7){
                 ahorros += num;
                 saldo -= num;
             }else{
-                alert('Usted no tiene esa cantidad.')
+                alert('Usted no tiene esa cantidad.');
             }
             break;
         case 6:
@@ -85,11 +84,11 @@ while (inicio != 7){
                 saldo += num;
                 ahorros -= num;
             }else{
-                alert('Usted no tiene esa cantidad en ahorros.')
+                alert('Usted no tiene esa cantidad en ahorros.');
             }
-            break
+            break;
         case 7:
-            break
+            break;
     }
-    inicio = parseInt(prompt("Qué operación desea hacer?\n 1. Agregar dinero. \n 2. Retirar dinero. \n 3. Ver saldo \n 4. Ver ahorros \n 5. Agregar dinero en ahorros. \n 6. Quitar dinero de ahorros \n 7. Salir"))
+    inicio = parseInt(prompt("Qué operación desea hacer?\n 1. Agregar dinero. \n 2. Retirar dinero. \n 3. Ver saldo \n 4. Ver ahorros \n 5. Agregar dinero en ahorros. \n 6. Quitar dinero de ahorros \n 7. Salir"));
 }
