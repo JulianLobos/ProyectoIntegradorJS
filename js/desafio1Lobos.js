@@ -1,13 +1,19 @@
 // IDEA DE PROYECTO FINAL: Aplicación que al ingresar tu sueldo te organiza la plata y te ayuda a ahorrar.
-let inicio = parseInt(prompt("Qué operación desea hacer?\n 1. Agregar dinero. \n 2. Retirar dinero. \n 3. Ver saldo \n 4. Ver ahorros \n 5. Agregar dinero en ahorros. \n 6. Quitar dinero de ahorros \n 7. Salir"));
+let inicio = parseInt(prompt("Qué operación desea hacer?\n 1. Agregar dinero. \n 2. Retirar dinero. \n 3. Ver saldo \n 4. Ver ahorros \n 5. Agregar dinero en ahorros. \n 6. Quitar dinero de ahorros \n 7. Ver movimientos \n 8. Salir"));
 let saldo = 0;
 let ahorros = 0;
 let num = 0;
+
+// agrego un array para llevar registro de los movimientos.
+let movimientos = [];
+
 function calc(porcentajeNum){
     ahorros += num * porcentajeNum;
     saldo -= num * porcentajeNum;
+    movimientos += '✔ Ingresó '+ (num - (num * porcentajeNum)) + ' pesos a su saldo.\n';
+    movimientos += '✔ Ingresó '+ (num * porcentajeNum) + ' pesos a ahorros.\n';
 }
-while (inicio != 7){
+while (inicio != 8){
     let option = 0;
     let valor = 0;
     let porcentaje = true;
@@ -58,6 +64,7 @@ while (inicio != 7){
             num = parseInt(prompt("Cuánto dinero quiere retirar del saldo? \n Disponible para retirar: "+ saldo + ' Pesos.'));
             if (num <= saldo && num > 0){
                 saldo -= num;
+                movimientos += "✔ Retiró " + num + " pesos de su saldo.\n"
             }else{
                 alert('Usted no tiene esa cantidad.');
             }
@@ -74,6 +81,7 @@ while (inicio != 7){
             if (num <= saldo && num > 0){
                 ahorros += num;
                 saldo -= num;
+                movimientos += '✔ Transfirió ' + num + ' pesos de su saldo hacia ahorros.\n'
             }else{
                 alert('Usted no tiene esa cantidad.');
             }
@@ -83,12 +91,17 @@ while (inicio != 7){
             if (num <= ahorros && num > 0){
                 saldo += num;
                 ahorros -= num;
+                movimientos += '✔ Transfirió ' + num + ' pesos de ahorros hacia su saldo.\n'
             }else{
                 alert('Usted no tiene esa cantidad en ahorros.');
             }
             break;
+        
         case 7:
+            alert(movimientos);
+        
+        case 8:
             break;
     }
-    inicio = parseInt(prompt("Qué operación desea hacer?\n 1. Agregar dinero. \n 2. Retirar dinero. \n 3. Ver saldo \n 4. Ver ahorros \n 5. Agregar dinero en ahorros. \n 6. Quitar dinero de ahorros \n 7. Salir"));
+    inicio = parseInt(prompt("Qué operación desea hacer?\n 1. Agregar dinero. \n 2. Retirar dinero. \n 3. Ver saldo \n 4. Ver ahorros \n 5. Agregar dinero en ahorros. \n 6. Quitar dinero de ahorros \n 7. Ver movimientos \n 8. Salir"));
 }
