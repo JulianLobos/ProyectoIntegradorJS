@@ -21,11 +21,10 @@ let users = [
 function login(){
     let username = prompt('Ingrese su usuario: ')
     let password = prompt('Ingrese su contraseña: ')
-    for (i=0; i < users.length; i++){
-        if (username == users[i].username && password == users[i].password){
-            ingreso = true
-            alert('Bienvenido/a ' + username + "!")
-        }
+    console.log(users.some((el) => el.username === username && el.password === password));
+    if(users.some((el) => el.username === username && el.password === password)){
+        ingreso = true;
+        alert('Bienvenido/a '+username+'!')
     }
 }
 
