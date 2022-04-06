@@ -40,7 +40,7 @@ function signUp(){
 }
 
 while (menu){
-    let inicio = parseInt(prompt('Elija una opción: \n 1. Iniciar Sesión. \n 2. Crear nueva cuenta. \n 3. Salir.'))
+    let inicio = parseInt(prompt('Elija una opción: \n 1. Iniciar Sesión \n 2. Crear nueva cuenta \n 3. Salir'))
     switch(inicio){
         case 1:
             login();
@@ -62,14 +62,14 @@ if (ingreso){
     let ahorros = 0;
     let num = 0;
 
-    // agrego un array para llevar registro de los movimientos.
-    let movimientos = [];
+    // Agrego un array para llevar registro de los movimientos.
+    const movimientos = [];
 
     function calc(porcentajeNum){
         ahorros += num * porcentajeNum;
         saldo -= num * porcentajeNum;
-        movimientos += '✔ Ingresó '+ (num - (num * porcentajeNum)) + ' pesos a su saldo.\n';
-        movimientos += '✔ Ingresó '+ (num * porcentajeNum) + ' pesos a ahorros.\n';
+        movimientos.push('✔ Ingresó '+ (num - (num * porcentajeNum)) + ' pesos a su saldo.\n');
+        movimientos.push('✔ Ingresó '+ (num * porcentajeNum) + ' pesos a ahorros.\n');
     }
     while (inicio != 8){
         let option = 0;
@@ -122,7 +122,7 @@ if (ingreso){
                 num = parseInt(prompt("Cuánto dinero quiere retirar del saldo? \n Disponible para retirar: "+ saldo + ' Pesos.'));
                 if (num <= saldo && num > 0){
                     saldo -= num;
-                    movimientos += "✔ Retiró " + num + " pesos de su saldo.\n"
+                    movimientos.push("✔ Retiró " + num + " pesos de su saldo.\n");
                 }else{
                     alert('Usted no tiene esa cantidad.');
                 }
@@ -139,7 +139,7 @@ if (ingreso){
                 if (num <= saldo && num > 0){
                     ahorros += num;
                     saldo -= num;
-                    movimientos += '✔ Transfirió ' + num + ' pesos de su saldo hacia ahorros.\n'
+                    movimientos.push('✔ Transfirió ' + num + ' pesos de su saldo hacia ahorros.\n');
                 }else{
                     alert('Usted no tiene esa cantidad.');
                 }
@@ -149,7 +149,7 @@ if (ingreso){
                 if (num <= ahorros && num > 0){
                     saldo += num;
                     ahorros -= num;
-                    movimientos += '✔ Transfirió ' + num + ' pesos de ahorros hacia su saldo.\n'
+                    movimientos.push('✔ Transfirió ' + num + ' pesos de ahorros hacia su saldo.\n');
                 }else{
                     alert('Usted no tiene esa cantidad en ahorros.');
                 }
@@ -157,7 +157,6 @@ if (ingreso){
             
             case 7:
                 alert(movimientos);
-            
             case 8:
                 break;
         }
