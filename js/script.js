@@ -1,5 +1,5 @@
 // IDEA DE PROYECTO FINAL: Aplicación que al ingresar tu sueldo te organiza la plata y te ayuda a ahorrar.
-
+let tabla = document.getElementById('table');
 // Login
 ingreso = false;
 menu = true;
@@ -67,16 +67,19 @@ if (ingreso){
     function calc(porcentajeNum){
         ahorros += num * porcentajeNum;
         saldo -= num * porcentajeNum;
-        movimientos.push('✔ Ingresó '+ (num - (num * porcentajeNum)) + ' pesos a su saldo.\n');
-        movimientos.push('✔ Ingresó '+ (num * porcentajeNum) + ' pesos a ahorros.\n');
+        fecha = Date();
+        movimientos.push('✔ El '+fecha+' ingresó '+ (num - (num * porcentajeNum)) + ' pesos a su saldo.\n');
+        movimientos.push('✔ El '+fecha+' ingresó '+ (num * porcentajeNum) + ' pesos a ahorros.\n');
+        tabla.innerHTML += "<tr><td>"+fecha+"</td><td>Ingresó $"+ (num - (num * porcentajeNum)) +" pesos a su saldo y $" + (num * porcentajeNum) + " pesos a ahorros.</td></tr>"
     }
     while (inicio != 8){
+        let fecha;
         let option = 0;
         let valor = 0;
         let porcentaje = true;
         switch(inicio){
             case 1:
-                num = parseInt(prompt("Actualmente su saldo es de " + saldo + " Pesos." + " Ingrese la cantidad de dinero que quiere ingresar: "));
+                num = parseInt(prompt("Actualmente su saldo es de $" + saldo + " Pesos." + " Ingrese la cantidad de dinero que quiere ingresar: "));
                 if (num > 0){
                     option = parseInt(prompt('Cuanto de ese dinero quiere destinar a los ahorros? \n 1. 10% \n 2. 20% \n 3. 30% \n 4. 40% \n 5. 50% \n 6. Otro Valor. \n 7. Salir'))
                     switch(option){
@@ -115,40 +118,46 @@ if (ingreso){
                 }else{
                     alert('Ingrese un valor.');
                 }
-                alert('Ahora su saldo disponible es de: ' + saldo + " Pesos.");
+                alert('Ahora su saldo disponible es de: $' + saldo + " Pesos.");
                 break;
             case 2:
-                num = parseInt(prompt("Cuánto dinero quiere retirar del saldo? \n Disponible para retirar: "+ saldo + ' Pesos.'));
+                num = parseInt(prompt("Cuánto dinero quiere retirar del saldo? \n Disponible para retirar: $"+ saldo + ' Pesos.'));
                 if (num <= saldo && num > 0){
                     saldo -= num;
-                    movimientos.push("✔ Retiró " + num + " pesos de su saldo.\n");
+                    fecha = Date();
+                    movimientos.push("✔ Retiró $" + num + " pesos de su saldo.\n");
+                    tabla.innerHTML += "<tr><td>"+fecha+"</td><td>Retiró $"+num+" pesos de su saldo.</td></tr>";
                 }else{
                     alert('Usted no tiene esa cantidad.');
                 }
                 break;
 
             case 3:
-                alert("Su saldo disponible es: "+ saldo);
+                alert("Su saldo disponible es: $"+ saldo);
                 break;
             case 4:
-                alert("Esto tiene en ahorros: "+ ahorros);
+                alert("Esto tiene en ahorros: $"+ ahorros);
                 break;
             case 5:
-                num = parseInt(prompt("Cuánto quiere ingresar a ahorros? \n Disponible: " + saldo + " Pesos."));
+                num = parseInt(prompt("Cuánto quiere ingresar a ahorros? \n Disponible: $" + saldo + " Pesos."));
                 if (num <= saldo && num > 0){
                     ahorros += num;
                     saldo -= num;
-                    movimientos.push('✔ Transfirió ' + num + ' pesos de su saldo hacia ahorros.\n');
+                    fecha = Date();
+                    movimientos.push('✔ Transfirió $' + num + ' pesos de su saldo hacia ahorros.\n');
+                    tabla.innerHTML += "<tr><td>"+fecha+"</td><td>Transfirió $"+num+" pesos de su saldo hacia ahorros.</td></tr>";
                 }else{
                     alert('Usted no tiene esa cantidad.');
                 }
                 break;
             case 6:
-                num = parseInt(prompt('Cuanto dinero quiere sacar de ahorros? \n Disponible para retirar: '+ ahorros + ' Pesos.'))
+                num = parseInt(prompt('Cuanto dinero quiere sacar de ahorros? \n Disponible para retirar: $'+ ahorros + ' Pesos.'))
                 if (num <= ahorros && num > 0){
                     saldo += num;
                     ahorros -= num;
-                    movimientos.push('✔ Transfirió ' + num + ' pesos de ahorros hacia su saldo.\n');
+                    fecha = Date();
+                    movimientos.push('✔ Transfirió $' + num + ' pesos de ahorros hacia su saldo.\n');
+                    tabla.innerHTML += "<tr><td>"+fecha+"</td><td>Transfirió $"+num+" pesos de sus ahorros hacia saldo.</td></tr>";
                 }else{
                     alert('Usted no tiene esa cantidad en ahorros.');
                 }

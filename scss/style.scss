@@ -4,4 +4,8 @@
     box-sizing: border-box;
 }
 
+body{
+    background: linear-gradient(90deg, rgba(0,145,173,1) 0%, rgba(183,9,76,1) 100%);
+}
+
 @import "components/index.scss";
