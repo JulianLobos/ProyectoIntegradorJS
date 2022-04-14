@@ -1,5 +1,9 @@
 ingreso = false;
 menu = true;
+let newAccBtn = document.getElementById('newAccount');
+let accCreated = document.getElementById('accCreated');
+let hasAcc = document.getElementById('hasAcc');
+let loginBtn = document.getElementById('entrarBtn');
 let users = [
     {
         username: 'julian',
@@ -47,3 +51,8 @@ function mostrarLogin(num){
     document.getElementById('section2').style.display='none';
     document.getElementById('section'+num).style.display='flex'
 }
+
+newAccBtn.onclick = () => {mostrarLogin('2');};
+accCreated.onclick = () => {mostrarLogin('1');};
+hasAcc.onclick = () => {mostrarLogin('1')};
+loginBtn.onclick = () => {login()};

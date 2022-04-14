@@ -16,13 +16,13 @@
                     <input type="text" id="user">
                     <label for="pass">Contraseña</label>
                     <input type="password" id="pass">
-                    <input type="submit" value="Entrar" id="entrarBtn" onclick="login()">
+                    <input type="submit" value="Entrar" id="entrarBtn">
                 </form>
                 <div class="error" id="errorText">
                     <p>Nombre de usuario o contraseña incorrectos!</p>
                 </div>
                 <div class="newAccount">
-                    <a href="#" onclick="mostrarLogin('2')"><p>¿Todavía no tenes cuenta? Crea una ahora!</p></a>
+                    <a href="#" id="newAccount"><p>¿Todavía no tenes cuenta? Crea una ahora!</p></a>
                 </div>
             </div>
         </div>
@@ -36,13 +36,13 @@
                     <input type="submit" value="Crear" id="crearBtn" onclick="crear()">
                 </form>
                 <div class="exito" id="exitoText">
-                    <p onclick="mostrarLogin('1')">Cuenta creada con éxito!<br>Hacé click acá para iniciar sesión.</p>
+                    <p id="accCreated">Cuenta creada con éxito!<br>Hacé click acá para iniciar sesión.</p>
                 </div>
                 <div class="error" id="errorText2">
                     <p>Debe ingresar un usuario y una contraseña!</p>
                 </div>
                 <div class="hasAccount">
-                    <a href="#" onclick="mostrarLogin('1')"><p>¿Ya tenés una cuenta? Inicia sesión!</p></a>
+                    <a href="#" id="hasAcc"><p>¿Ya tenés una cuenta? Inicia sesión!</p></a>
                 </div>
             </div>
         </div>
