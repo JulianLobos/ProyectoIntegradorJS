@@ -4,23 +4,136 @@
   box-sizing: border-box; }
 
 body {
-  background: linear-gradient(90deg, #0091ad 0%, #b7094c 100%); }
+  background-color: #74EBD5;
+  background-image: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+  font-family: 'Montserrat', sans-serif; }
 
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  color: #FFF;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  height: 100vh; }
+  color: #141414;
+  height: auto;
+  font-weight: 600; }
+  body header {
+    display: flex;
+    justify-content: space-between; }
+    body header .saldo, body header .ahorros {
+      margin: 20px;
+      width: 200px;
+      height: 100px;
+      border-radius: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: rgba(255, 255, 255, 0.144); }
+      body header .saldo p span, body header .ahorros p span {
+        font-weight: 600; }
+  body .navBar {
+    margin: 30px 30px 60px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center; }
+    body .navBar .option {
+      font-size: 0.85em;
+      margin: 20px;
+      padding: 5px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 150px;
+      height: 150px;
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255, 0.144);
+      cursor: pointer;
+      transition: all 0.3s ease; }
+      body .navBar .option img {
+        width: 35px;
+        height: 35px;
+        filter: invert(0%) sepia(3%) saturate(5934%) hue-rotate(341deg) brightness(96%) contrast(84%); }
+      body .navBar .option:hover {
+        transform: scale(1.1);
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; }
+  body .agregarSaldo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    body .agregarSaldo form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      body .agregarSaldo form .mensajeError {
+        color: #da3232;
+        display: none;
+        margin: 0 0 15px 0; }
+      body .agregarSaldo form input {
+        margin: 8px 0;
+        width: 200px;
+        height: 30px;
+        border-radius: 15px;
+        border: none;
+        padding: 10px; }
+        body .agregarSaldo form input:focus {
+          outline: none; }
+      body .agregarSaldo form .inputBtn {
+        background-color: #72cc5f;
+        cursor: pointer;
+        height: 45px;
+        font-weight: 600;
+        font-family: 'Montserrat', sans-serif;
+        transition: all 0.2s ease; }
+        body .agregarSaldo form .inputBtn:hover {
+          background-color: #49813d;
+          color: #FFF;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; }
+    body .agregarSaldo form:nth-child(2) {
+      display: none; }
+  body #div2, body #div3, body #div4 {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
+    body #div2 form, body #div3 form, body #div4 form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      body #div2 form .mensajeError, body #div3 form .mensajeError, body #div4 form .mensajeError {
+        color: #da3232;
+        display: none;
+        margin: 0 0 15px 0; }
+      body #div2 form input, body #div3 form input, body #div4 form input {
+        margin: 8px 0;
+        width: 200px;
+        height: 30px;
+        border-radius: 15px;
+        border: none;
+        padding: 10px; }
+        body #div2 form input:focus, body #div3 form input:focus, body #div4 form input:focus {
+          outline: none; }
+      body #div2 form .inputBtn, body #div3 form .inputBtn, body #div4 form .inputBtn {
+        background-color: #72cc5f;
+        cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
+        height: 45px;
+        font-weight: 600;
+        transition: all 0.2s ease; }
+        body #div2 form .inputBtn:hover, body #div3 form .inputBtn:hover, body #div4 form .inputBtn:hover {
+          background-color: #49813d;
+          color: #FFF;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; }
   body .tablaMovimientos {
-    margin-top: 100px;
+    margin: 50px 0 100px 0;
     border-radius: 30px;
     display: flex;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+    display: none; }
     body .tablaMovimientos table {
+      margin: 15px;
       background-color: rgba(255, 255, 255, 0.144); }
     body .tablaMovimientos table, body .tablaMovimientos th, body .tablaMovimientos td {
       border: 1px solid #FFF;
@@ -34,3 +147,89 @@ body {
     color: #ccc;
     font-size: 0.75em;
     padding: 5px; }
+
+body .loginsignup {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  body .loginsignup .login, body .loginsignup .signUp {
+    display: inherit;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 500px;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.226);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px; }
+    body .loginsignup .login .form, body .loginsignup .signUp .form {
+      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      body .loginsignup .login .form form, body .loginsignup .signUp .form form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; }
+        body .loginsignup .login .form form label, body .loginsignup .signUp .form form label {
+          margin: 10px 0 5px 0; }
+        body .loginsignup .login .form form input, body .loginsignup .signUp .form form input {
+          height: 30px;
+          border-radius: 10px;
+          border: none;
+          padding: 10px;
+          transition: all 0.1s ease; }
+          body .loginsignup .login .form form input:hover, body .loginsignup .signUp .form form input:hover {
+            border: 3px solid #000; }
+        body .loginsignup .login .form form #entrarBtn, body .loginsignup .signUp .form form #entrarBtn {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 600;
+          margin: 15px 0 0 0;
+          padding: 8px 20px;
+          cursor: pointer;
+          transition: all 0.3s ease; }
+          body .loginsignup .login .form form #entrarBtn:hover, body .loginsignup .signUp .form form #entrarBtn:hover {
+            transform: scale(1.1);
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+            border: none; }
+        body .loginsignup .login .form form #crearBtn, body .loginsignup .signUp .form form #crearBtn {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 600;
+          margin: 15px 0 0 0;
+          padding: 8px 20px;
+          cursor: pointer;
+          transition: all 0.3s ease; }
+          body .loginsignup .login .form form #crearBtn:hover, body .loginsignup .signUp .form form #crearBtn:hover {
+            transform: scale(1.1);
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+            border: none; }
+      body .loginsignup .login .form .error, body .loginsignup .signUp .form .error {
+        display: none;
+        margin: 15px 0 0 0;
+        color: #da3232; }
+      body .loginsignup .login .form .exito, body .loginsignup .signUp .form .exito {
+        display: none;
+        margin: 15px 0 0 0;
+        color: #1fb61f;
+        cursor: pointer; }
+      body .loginsignup .login .form .newAccount, body .loginsignup .login .form .hasAccount, body .loginsignup .signUp .form .newAccount, body .loginsignup .signUp .form .hasAccount {
+        margin: 100px 15px 0 15px;
+        text-align: center; }
+        body .loginsignup .login .form .newAccount a, body .loginsignup .login .form .hasAccount a, body .loginsignup .signUp .form .newAccount a, body .loginsignup .signUp .form .hasAccount a {
+          text-decoration: none;
+          color: #141414; }
+  body .loginsignup .signUp {
+    display: none; }
+
+@media (max-width: 576px) {
+  body {
+    font-size: 0.75em; }
+    body .navBar {
+      margin: 10px; }
+      body .navBar .option {
+        width: 80px;
+        height: 80px;
+        text-align: center;
+        padding: 15px; } }

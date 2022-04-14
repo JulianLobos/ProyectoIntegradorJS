@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,100;1,300&display=swap" rel="stylesheet">
+    <title>Julian Lobos | Coderhouse</title>
+</head>
+<body>
+    <header>
+        <div class="saldo">
+            <p>Saldo</p>
+            <p>$ <span id="saldo">0</span></p>
+            <p>Disponibles</p>
+        </div>
+        <div class="ahorros">
+            <p>Ahorros</p>
+            <p>$ <span id="ahorros">0</span></p>
+        </div>
+    </header>
+
+    <div class="navBar">
+        <div class="option" onclick="mostrarDiv('1')">
+            <img src="img/plus-solid.svg" alt="icono suma">
+            <p>Agregar Dinero</p>
+        </div>
+        <div class="option" onclick="mostrarDiv('2')">
+            <img src="img/minus-solid.svg" alt="icono resta">
+            <p>Retirar Saldo</p>
+        </div>
+        <div class="option" onclick="mostrarDiv('3')">
+            <img src="img/ahorroPlus.svg" alt="alcancía icono">
+            <p>Agregar Ahorros</p>
+        </div>
+        <div class="option" onclick="mostrarDiv('4')">
+            <img src="img/ahorroMinus.svg" alt="alcancía icono">
+            <p>Retirar Ahorros</p>
+        </div>
+        <div class="option" id="mov" onclick="mostrarDiv('5')">
+            <img src="img/movimientos.svg" alt="list icono">
+            <p>Ver movimientos</p>
+        </div>
+    </div>
+
+    <div class="agregarSaldo" id="div1">
+        <form>
+            <label for="agregarSaldo">¿Cuánto dinero quiere ingresar?</label>
+            <input type="number" value="0" id="agregarSaldo" autofocus>
+            <input type="submit" id="agregarBtn" value="Agregar" class="inputBtn">
+            <p class="mensajeError" id="mensajeError">Debe ingresar una cantidad positiva para depositar.</p>
+        </form>
+        
+        <form id="agregarForm2">
+            <label for="agregarAhorros">¿Qué porcentaje de ese dinero quiere destinarlo a ahorros?</label>
+            <input type="number" value="0" max="100" min="0" id="agregarAhorros">
+            <input type="submit" id="agregarAhorroBtn" value="Agregar" class="inputBtn">
+            <p class="mensajeError" id="mensajeError2">Ingrese un porcentaje del 0 al 100.</p>
+        </form>
+    </div>
+    <div id="div2">
+        <form>
+            <label for="retirarSaldo">¿Cuánto dinero quiere retirar del saldo?</label>
+            <input type="number" value="0" id="retirarSaldo">
+            <input type="submit" id="retirarBtn" value="Retirar" class="inputBtn">
+            <p class="mensajeError" id="mensajeError3">Usted no tiene esa cantidad.</p>
+        </form>
+    </div>
+    <div id="div3">
+        <form>
+            <label for="sumarAhorros">¿Cuánto dinero de su saldo disponible quiere transferir a ahorros?</label>
+            <input type="number" value="0" id="sumarAhorros">
+            <input type="submit" id="sumarAhorrosBtn" value="Agregar" class="inputBtn">
+            <p class="mensajeError" id="mensajeError4">Usted no tiene esa cantidad en su saldo.</p>
+        </form>
+    </div>
+    <div id="div4">
+        <form>
+            <label for="restarAhorros">¿Cuánto dinero de sus ahorros quiere transferir a saldo?</label>
+            <input type="number" value="0" id="restarAhorros">
+            <input type="submit" id="restarAhorrosBtn" value="Retirar" class="inputBtn">
+            <p class="mensajeError" id="mensajeError5">Usted no tiene esa cantidad en sus ahorros.</p>
+        </form>
+    </div>
+
+    <div class="tablaMovimientos" id="div5">
+        <table id="table">
+            <tr>
+                <th>Fecha</th>
+                <th>Movimiento</th>
+            </tr>
+        </table>        
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

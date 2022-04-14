@@ -5,20 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <title>Desafío 1</title>
+    <title>Julian Lobos</title>
 </head>
 <body>
-    <div class="tablaMovimientos">
-        <table id="table">
-            <tr>
-                <th>Fecha</th>
-                <th>Movimiento</th>
-            </tr>
-        </table>        
-    </div>
-    <footer>
-        <p>Julian Lobos | Coderhouse</p>
-    </footer>
-    <script src="js/script.js"></script>
+    <section class="loginsignup">
+        <div class="login" id="section1">
+            <div class="form">
+                <form>
+                    <label for="user">Nombre de usuario</label>
+                    <input type="text" id="user">
+                    <label for="pass">Contraseña</label>
+                    <input type="password" id="pass">
+                    <input type="submit" value="Entrar" id="entrarBtn" onclick="login()">
+                </form>
+                <div class="error" id="errorText">
+                    <p>Nombre de usuario o contraseña incorrectos!</p>
+                </div>
+                <div class="newAccount">
+                    <a href="#" onclick="mostrarLogin('2')"><p>¿Todavía no tenes cuenta? Crea una ahora!</p></a>
+                </div>
+            </div>
+        </div>
+        <div class="signUp" id="section2">
+            <div class="form">
+                <form>
+                    <label for="newUser">Nuevo nombre de usuario</label>
+                    <input type="text" id="newUser">
+                    <label for="newPass">Nueva Contraseña</label>
+                    <input type="password" id="newPass">
+                    <input type="submit" value="Crear" id="crearBtn" onclick="crear()">
+                </form>
+                <div class="exito" id="exitoText">
+                    <p onclick="mostrarLogin('1')">Cuenta creada con éxito!<br>Hacé click acá para iniciar sesión.</p>
+                </div>
+                <div class="error" id="errorText2">
+                    <p>Debe ingresar un usuario y una contraseña!</p>
+                </div>
+                <div class="hasAccount">
+                    <a href="#" onclick="mostrarLogin('1')"><p>¿Ya tenés una cuenta? Inicia sesión!</p></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/login.js"></script>
 </body>
 </html>
