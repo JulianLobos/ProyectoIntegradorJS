@@ -2,6 +2,7 @@
     body{
         font-size: 0.70em;
         header{
+            text-align: center;
             .saldo, .ahorros{
                 width: 100px;
                 height: 50px;
@@ -26,6 +27,14 @@
         .loginsignup{
             .login, .signUp{
                 margin: 0px 40px;
+            }
+        }
+
+        .tablaMovimientos{
+            margin: 0;
+            text-align: center;
+            th, td{
+                padding: 0;
             }
         }
     }

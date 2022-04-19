@@ -185,7 +185,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    display: none; }
+    display: none;
+    text-align: center; }
     body .tablaMovimientos table {
       margin: 15px;
       background-color: rgba(255, 255, 255, 0.144); }
@@ -193,7 +194,7 @@ body {
       border: 1px solid #FFF;
       border-collapse: collapse; }
     body .tablaMovimientos th, body .tablaMovimientos td {
-      padding: 15px 30px; }
+      padding: 5px 15px; }
   body footer {
     display: flex;
     justify-content: center;
@@ -285,9 +286,11 @@ body .loginsignup {
 @media (max-width: 576px) {
   body {
     font-size: 0.70em; }
-    body header .saldo, body header .ahorros {
-      width: 100px;
-      height: 50px; }
+    body header {
+      text-align: center; }
+      body header .saldo, body header .ahorros {
+        width: 100px;
+        height: 50px; }
     body .navBar {
       margin: 10px; }
       body .navBar .option {
@@ -302,4 +305,9 @@ body .loginsignup {
           height: auto;
           margin: 0; }
     body .loginsignup .login, body .loginsignup .signUp {
-      margin: 0px 40px; } }
+      margin: 0px 40px; }
+    body .tablaMovimientos {
+      margin: 0;
+      text-align: center; }
+      body .tablaMovimientos th, body .tablaMovimientos td {
+        padding: 0; } }

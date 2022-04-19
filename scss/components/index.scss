@@ -205,6 +205,7 @@ body{
         justify-content: center;
         align-items: center;
         display: none;
+        text-align: center;
         table{
             margin: 15px;
             background-color: rgba(255, 255, 255, 0.144);
@@ -214,7 +215,7 @@ body{
             border-collapse: collapse;
         }
         th, td{
-            padding: 15px 30px;
+            padding: 5px 15px;
         }
     }
     footer{
