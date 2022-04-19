@@ -9,15 +9,29 @@ let opt5 = document.getElementById('mov');
 let saldo = 0;
 let ahorro = 0;
 let fecha;
+let categoria;
+let detalleGasto;
+let detalleIngreso;
+let detalleAhorro;
+let detalleAhorroRetiro;
 let movimientos = [];
+let result = localStorage.getItem('CuentaAbierta');
+let current = JSON.parse(result);
+
+function infoContacto(){
+    let infoCont = document.getElementById('userName');
+    infoCont.innerHTML = '<p>'+current[0].nombre+ ' ' +current[0].apellido+'</p>';
+}
 
 function ultMovimientos(){
     movimientos.forEach(element => 
-        tabla.innerHTML += "<tr><td>" + element.fecha + "</td><td>"+ element.movimiento +"</td></tr>");
+        tabla.innerHTML += "<tr><td>" + element.fecha + "</td><td>" + element.tipo + "</td><td>" + element.monto + "</td><td>" + element.categoria + "</td><td>"+ element.detalle +"</td></tr>");
 }
 
 function retirar(){
+    categoria = document.getElementById('tipoGasto').value;
     number = +document.getElementById('retirarSaldo').value;
+    detalleGasto = document.getElementById('detalleGasto').value;
     if(number <= saldo && number > 0){
         saldo -= number;
         saldoHtml.innerHTML = saldo;
@@ -25,10 +39,14 @@ function retirar(){
         fecha = Date();
         movimientos.unshift({
             fecha: fecha,
-            movimiento: "Retiró $"+ number +" pesos de su saldo."
+            categoria: categoria,
+            tipo: 'Gasto',
+            monto: "$"+number,
+            detalle: detalleGasto,
         })
         document.getElementById('mensajeError3').style.display= "none";
-        document.getElementById('retirarSaldo').style.border= "unset"
+        document.getElementById('retirarSaldo').style.border= "1px solid rgb(165, 163, 163)"
+        document.getElementById('detalleGasto').value = '';
     }else{
         document.getElementById('mensajeError3').style.display= "flex";
         document.getElementById('retirarSaldo').style.border= "3px solid red"
@@ -37,7 +55,8 @@ function retirar(){
 
 function ahorros(){
     number = +document.getElementById('sumarAhorros').value;
-    if(number <= saldo && number >= 0){
+    detalleAhorro = document.getElementById('detalleAhorro').value;
+    if(number <= saldo && number > 0){
         ahorro += number;
         saldo -= number;
         saldoHtml.innerHTML = saldo;
@@ -46,10 +65,14 @@ function ahorros(){
         fecha = Date();
         movimientos.unshift({
             fecha: fecha,
-            movimiento: "Transfirió $"+ number +" pesos de su saldo a ahorros."
+            categoria: "Ahorro",
+            tipo: 'Aumento de ahorros',
+            monto: "$"+number,
+            detalle: detalleAhorro,
         })
         document.getElementById('mensajeError4').style.display= "none";
-        document.getElementById('sumarAhorros').style.border= "unset"
+        document.getElementById('detalleAhorro').value = '';
+        document.getElementById('sumarAhorros').style.border= "1px solid rgb(165, 163, 163)"
     }else{
         document.getElementById('mensajeError4').style.display= "flex";
         document.getElementById('sumarAhorros').style.border= "3px solid red"
@@ -57,6 +80,7 @@ function ahorros(){
 }
 
 function restarAhorros(){
+    detalleAhorroRetiro = document.getElementById('detalleAhorroRetiro').value;
     number = +document.getElementById('restarAhorros').value;
     if(number <= ahorro && number > 0){
         saldo += number;
@@ -67,10 +91,14 @@ function restarAhorros(){
         fecha = Date();
         movimientos.unshift({
             fecha: fecha,
-            movimiento: "Transfirió $"+ number +" pesos de sus ahorros a saldo."
+            categoria: "Ahorro",
+            tipo: 'Retiro de ahorros',
+            monto: "$"+number,
+            detalle: detalleAhorroRetiro,
         })
         document.getElementById('mensajeError5').style.display= "none";
-        document.getElementById('restarAhorros').style.border= "unset"
+        document.getElementById('restarAhorros').style.border= "1px solid rgb(165, 163, 163)"
+        document.getElementById('detalleAhorroRetiro').value = '';
     }else{
         document.getElementById('mensajeError5').style.display= "flex";
         document.getElementById('restarAhorros').style.border= "3px solid red"
@@ -86,7 +114,7 @@ function mostrarDiv(num){
     document.getElementById('div'+num).style.display='flex'
     if(num == 5){
         tabla.innerHTML = "";
-        tabla.innerHTML += "<tr><th>Fecha</th><th>Movimiento</th></tr>"
+        tabla.innerHTML += "<tr><th>Fecha</th><th>Tipo</th><th>Monto</th><th>Categoría</th><th>Detalles</th></tr>"
         ultMovimientos();
     }
 }
@@ -113,7 +141,7 @@ document.getElementById('agregarBtn').onclick = function(e){
     if(number > 0){
         document.getElementById('agregarForm2').style.display= "flex";
         document.getElementById('mensajeError').style.display= "none";
-        document.getElementById('agregarSaldo').style.border= "unset"
+        document.getElementById('agregarSaldo').style.border= "1px solid rgb(165, 163, 163)"
     }else{
         document.getElementById('agregarForm2').style.display= "none";
         document.getElementById('mensajeError').style.display= "flex";
@@ -124,6 +152,8 @@ document.getElementById('agregarBtn').onclick = function(e){
 document.getElementById('agregarAhorroBtn').onclick = function(e){
     e.preventDefault()
     let ahorros = +document.getElementById('agregarAhorros').value;
+    categoria = document.getElementById('tipoIngreso').value;
+    detalleIngreso = document.getElementById('detalleIngreso').value;
     if(ahorros >= 0 && ahorros <= 100){
         ahorro += number * (ahorros/100);
         saldo += number - (number * (ahorros/100));
@@ -131,12 +161,25 @@ document.getElementById('agregarAhorroBtn').onclick = function(e){
         ahorroHtml.innerHTML = ahorro;
         document.getElementById('agregarAhorros').value = 0;
         document.getElementById('agregarSaldo').value = 0;
+        document.getElementById('detalleIngreso').value = "";
         document.getElementById('agregarForm2').style.display= "none";
         fecha = Date();
         movimientos.unshift({
             fecha: fecha,
-            movimiento: "Depositó $"+ (number - (number * (ahorros/100))) +" pesos en su saldo y $"+ (number * (ahorros/100))+" pesos en ahorros"
-        })        
+            categoria: categoria,
+            tipo: 'Ingreso',
+            monto: "$"+ (number - (number * (ahorros/100))),
+            detalle: detalleIngreso,
+        })
+        if (ahorro > 0){
+            movimientos.unshift({
+                fecha: fecha,
+                categoria: "Ahorro",
+                tipo: 'Ingreso',
+                monto: "$"+ (number * (ahorros/100)),
+                detalle: "Porcentaje de ahorro ingresado desde "+ categoria,
+            })
+        }         
     }else{
         document.getElementById('mensajeError2').style.display= "flex";
         document.getElementById('agregarAhorros').style.border= "3px solid red"
@@ -157,3 +200,5 @@ document.getElementById('restarAhorrosBtn').onclick = function(e){
     e.preventDefault();
     restarAhorros();
 }
+
+infoContacto();

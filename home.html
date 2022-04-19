@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,100;1,300&display=swap" rel="stylesheet">
-    <title>Julian Lobos | Coderhouse</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,100;1,300&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="img/logo.svg">
+    <title>DW | Digital Wallet</title>
 </head>
 <body>
     <header>
@@ -16,6 +17,9 @@
             <p>Saldo</p>
             <p>$ <span id="saldo">0</span></p>
             <p>Disponibles</p>
+        </div>
+        <div class="userName" id="userName">
+            <p>Julian Lobos</p>
         </div>
         <div class="ahorros">
             <p>Ahorros</p>
@@ -57,6 +61,19 @@
         <form id="agregarForm2">
             <label for="agregarAhorros">¿Qué porcentaje de ese dinero quiere destinarlo a ahorros?</label>
             <input type="number" value="0" max="100" min="0" id="agregarAhorros">
+            <label for="tipoIngreso">Seleccione el tipo de ingreso: </label>
+            <select name="tipoIngreso" id="tipoIngreso">
+                <option value=""></option>
+                <option value="Sueldo">Sueldo</option>
+                <option value="Freelance">Freelance</option>
+                <option value="Venta">Venta</option>
+                <option value="Trabajo Extra">Trabajo Extra</option>
+                <option value="Donación">Donación</option>
+                <option value="Préstamo">Préstamo</option>
+                <option value="Otro">Otro</option>
+            </select>
+            <label for="detalleIngreso">Agregue detalles (Opcional)</label>
+            <input type="text" name="detalleIngreso" id="detalleIngreso">
             <input type="submit" id="agregarAhorroBtn" value="Agregar" class="inputBtn">
             <p class="mensajeError" id="mensajeError2">Ingrese un porcentaje del 0 al 100.</p>
         </form>
@@ -65,6 +82,17 @@
         <form>
             <label for="retirarSaldo">¿Cuánto dinero quiere retirar del saldo?</label>
             <input type="number" value="0" id="retirarSaldo">
+            <label for="tipoGasto">Seleccione la categoría del gasto:</label>
+            <select name="tipoGasto" id="tipoGasto">
+                <option value="Compras">Compras</option>
+                <option value="Alquiler">Alquiler</option>
+                <option value="Impuestos">Impuestos</option>
+                <option value="Educacion">Educación</option>
+                <option value="Suscripciones">Suscripciones</option>
+                <option value="Otros">Otros</option>
+            </select>
+            <label for="detalleGasto">Agregue detalles (Opcional)</label>
+            <input type="text" name="detalleGasto" id="detalleGasto">
             <input type="submit" id="retirarBtn" value="Retirar" class="inputBtn">
             <p class="mensajeError" id="mensajeError3">Usted no tiene esa cantidad.</p>
         </form>
@@ -73,6 +101,8 @@
         <form>
             <label for="sumarAhorros">¿Cuánto dinero de su saldo disponible quiere transferir a ahorros?</label>
             <input type="number" value="0" id="sumarAhorros">
+            <label for="detalleAhorro">Detalle: </label>
+            <input type="text" name="detalleAhorro" id="detalleAhorro">
             <input type="submit" id="sumarAhorrosBtn" value="Agregar" class="inputBtn">
             <p class="mensajeError" id="mensajeError4">Usted no tiene esa cantidad en su saldo.</p>
         </form>
@@ -81,6 +111,8 @@
         <form>
             <label for="restarAhorros">¿Cuánto dinero de sus ahorros quiere transferir a saldo?</label>
             <input type="number" value="0" id="restarAhorros">
+            <label for="detalleAhorroRetiro">Detalle: </label>
+            <input type="text" name="detalleAhorroRetiro" id="detalleAhorroRetiro">
             <input type="submit" id="restarAhorrosBtn" value="Retirar" class="inputBtn">
             <p class="mensajeError" id="mensajeError5">Usted no tiene esa cantidad en sus ahorros.</p>
         </form>

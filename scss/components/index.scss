@@ -1,7 +1,9 @@
 body{
-    color: rgb(20, 20, 20);
+    color: #fafafa;
     height: auto;
     font-weight: 600;
+    min-height: 100vh;
+    height: 100%;
     header{
         display: flex;
         justify-content: space-between;
@@ -9,17 +11,28 @@ body{
             margin: 20px;
             width: 200px;
             height: 100px;
-            border-radius: 25px;
+            border-radius: 5px;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            background-color: rgba(255, 255, 255, 0.144);
+            background-color: rgba(255, 255, 255, 0.226);
             p{
                 span{
                     font-weight: 600;
                 }
             }
+        }
+        .userName{
+            margin: 20px;
+            width: 200px;
+            height: 60px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; 
+            background-color: rgba(255, 255, 255, 0.226);
         }
     }
     .navBar{
@@ -39,14 +52,15 @@ body{
             align-items: center;
             width: 150px;
             height: 150px;
-            border-radius: 20px;
-            background-color: rgba(255, 255, 255, 0.144);
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.226);
             cursor: pointer;
             transition: all 0.3s ease;
             img{
                 width: 35px;
                 height: 35px;
-                filter: invert(0%) sepia(3%) saturate(5934%) hue-rotate(341deg) brightness(96%) contrast(84%);
+                margin-bottom: 8px;
+                filter: invert(100%) sepia(3%) saturate(12%) hue-rotate(93deg) brightness(110%) contrast(96%);
             }
             &:hover{
                 transform: scale(1.1);
@@ -60,6 +74,8 @@ body{
         justify-content: center;
         align-items: center;
         form{
+            padding: 20px;
+            text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -69,18 +85,39 @@ body{
                 display: none; 
                 margin: 0 0 15px 0;
             }
+            select{
+                margin: 8px 0;
+                width: 200px;
+                height: 40px;
+                background-color: transparent;
+                border-radius: 5px;
+                border: 1px solid rgb(165, 163, 163);
+                color: white;
+                font-family: 'Montserrat', sans-serif;
+                padding: 10px;
+                &:focus{
+                    outline: none;
+                }
+                option{
+                    background-color: #191919;
+                }
+            }
             input{
                 margin: 8px 0;
                 width: 200px;
                 height: 30px;
-                border-radius: 15px;
-                border: none;
+                background-color: transparent;
+                border-radius: 5px;
+                border: 1px solid rgb(165, 163, 163);
+                color: white;
+                font-family: 'Montserrat', sans-serif;
                 padding: 10px;
                 &:focus{
                     outline: none;
                 }
             }
             .inputBtn{
+                color: black;
                 background-color: rgb(114, 204, 95);
                 cursor: pointer;
                 height: 45px;
@@ -89,7 +126,6 @@ body{
                 transition: all 0.2s ease;
                 &:hover{
                     background-color: rgb(73, 129, 61);
-                    color: #FFF;
                     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
                 }
             }
@@ -104,6 +140,8 @@ body{
         align-items: center;
         flex-direction: column;
         form{
+            padding: 20px;
+            text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -113,18 +151,39 @@ body{
                 display: none; 
                 margin: 0 0 15px 0;
             }
+            select{
+                margin: 8px 0;
+                width: 200px;
+                height: 40px;
+                background-color: transparent;
+                border-radius: 5px;
+                border: 1px solid rgb(165, 163, 163);
+                color: white;
+                font-family: 'Montserrat', sans-serif;
+                padding: 10px;
+                &:focus{
+                    outline: none;
+                }
+                option{
+                    background-color: #191919;
+                }
+            }
             input{
                 margin: 8px 0;
                 width: 200px;
                 height: 30px;
-                border-radius: 15px;
-                border: none;
+                background-color: transparent;
+                border-radius: 5px;
+                border: 1px solid rgb(165, 163, 163);
+                color: white;
+                font-family: 'Montserrat', sans-serif;
                 padding: 10px;
                 &:focus{
                     outline: none;
                 }
             }
             .inputBtn{
+                color: black;
                 background-color: rgb(114, 204, 95);
                 cursor: pointer;
                 font-family: 'Montserrat', sans-serif;
@@ -133,15 +192,15 @@ body{
                 transition: all 0.2s ease;
                 &:hover{
                     background-color: rgb(73, 129, 61);
-                    color: #FFF;
                     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
                 }
             }
         }
     }
     .tablaMovimientos{
-        margin: 50px 0 100px 0;
-        border-radius: 30px;
+        margin: 50px 0 0 0;
+        padding: 0 0 100px 0;
+        border-radius: 5px;
         display: flex;
         justify-content: center;
         align-items: center;

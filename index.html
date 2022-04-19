@@ -5,12 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <title>Julian Lobos</title>
+    <link rel="icon" type="image/x-icon" href="img/logo.svg">
+    <title>DW | Digital Wallet</title>
 </head>
 <body>
     <section class="loginsignup">
         <div class="login" id="section1">
             <div class="form">
+                <p class="formTitle">LOG IN</p>
                 <form>
                     <label for="user">Nombre de usuario</label>
                     <input type="text" id="user">
@@ -29,11 +31,16 @@
         <div class="signUp" id="section2">
             <div class="form">
                 <form>
+                    <p class="formTitle">SIGN UP</p>
                     <label for="newUser">Nuevo nombre de usuario</label>
-                    <input type="text" id="newUser">
+                    <input type="text" id="newUser" required>
                     <label for="newPass">Nueva Contraseña</label>
-                    <input type="password" id="newPass">
-                    <input type="submit" value="Crear" id="crearBtn" onclick="crear()">
+                    <input type="password" id="newPass" required>
+                    <label for="newName">Tu nombre</label>
+                    <input type="text" id="newName" required>
+                    <label for="newLastname">Tu Apellido</label>
+                    <input type="text" id="newLastname" required>
+                    <input type="submit" value="Crear" id="crearBtn">
                 </form>
                 <div class="exito" id="exitoText">
                     <p id="accCreated">Cuenta creada con éxito!<br>Hacé click acá para iniciar sesión.</p>
