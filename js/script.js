@@ -17,6 +17,19 @@ let detalleAhorroRetiro;
 let movimientos = [];
 let result = localStorage.getItem('CuentaAbierta');
 let current = JSON.parse(result);
+let fechaGenerada = [];
+
+function generadorFecha(){
+    fechaGenerada = [];
+    let generador = new Date;
+    fechaGenerada += generador.getDate() + "/";
+    fechaGenerada += generador.getMonth()+1 + "/";
+    fechaGenerada += generador.getFullYear();
+    fechaGenerada += " ";
+    fechaGenerada += generador.getHours() + ":";
+    fechaGenerada += generador.getMinutes() + " hs";
+    return fechaGenerada;
+}
 
 function infoContacto(){
     let infoCont = document.getElementById('userName');
@@ -36,7 +49,7 @@ function retirar(){
         saldo -= number;
         saldoHtml.innerHTML = saldo;
         document.getElementById('retirarSaldo').value = 0;
-        fecha = Date();
+        fecha = generadorFecha();
         movimientos.unshift({
             fecha: fecha,
             categoria: categoria,
@@ -62,7 +75,7 @@ function ahorros(){
         saldoHtml.innerHTML = saldo;
         ahorroHtml.innerHTML = ahorro;
         document.getElementById('sumarAhorros').value = 0;
-        fecha = Date();
+        fecha = generadorFecha();
         movimientos.unshift({
             fecha: fecha,
             categoria: "Ahorro",
@@ -88,7 +101,7 @@ function restarAhorros(){
         saldoHtml.innerHTML = saldo;
         ahorroHtml.innerHTML = ahorro;
         document.getElementById('restarAhorros').value = 0;
-        fecha = Date();
+        fecha = generadorFecha();
         movimientos.unshift({
             fecha: fecha,
             categoria: "Ahorro",
@@ -163,7 +176,7 @@ document.getElementById('agregarAhorroBtn').onclick = function(e){
         document.getElementById('agregarSaldo').value = 0;
         document.getElementById('detalleIngreso').value = "";
         document.getElementById('agregarForm2').style.display= "none";
-        fecha = Date();
+        fecha = generadorFecha();
         movimientos.unshift({
             fecha: fecha,
             categoria: categoria,
