@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" type="image/x-icon" href="img/logo.svg">
+    <title>DW | Digital Wallet</title>
+</head>
+<body>
+    <section class="loginsignup">
+        <div class="login" id="section1">
+            <div class="form">
+                <p class="formTitle">LOG IN</p>
+                <form>
+                    <label for="user">Nombre de usuario</label>
+                    <input type="text" id="user">
+                    <label for="pass">Contraseña</label>
+                    <input type="password" id="pass">
+                    <input type="submit" value="Entrar" id="entrarBtn">
+                </form>
+                <div class="error" id="errorText">
+                    <p>Nombre de usuario o contraseña incorrectos!</p>
+                </div>
+                <div class="newAccount">
+                    <a href="#" id="newAccount"><p>¿Todavía no tenes cuenta? Crea una ahora!</p></a>
+                </div>
+            </div>
+        </div>
+        <div class="signUp" id="section2">
+            <div class="form">
+                <form>
+                    <p class="formTitle">SIGN UP</p>
+                    <label for="newUser">Nuevo nombre de usuario</label>
+                    <input type="text" id="newUser" required>
+                    <label for="newPass">Nueva Contraseña</label>
+                    <input type="password" id="newPass" required>
+                    <label for="newName">Tu nombre</label>
+                    <input type="text" id="newName" required>
+                    <label for="newLastname">Tu Apellido</label>
+                    <input type="text" id="newLastname" required>
+                    <input type="submit" value="Crear" id="crearBtn">
+                </form>
+                <div class="exito" id="exitoText">
+                    <p id="accCreated">Cuenta creada con éxito!<br>Hacé click acá para iniciar sesión.</p>
+                </div>
+                <div class="error" id="errorText2">
+                    <p>Debe ingresar un usuario y una contraseña!</p>
+                </div>
+                <div class="hasAccount">
+                    <a href="#" id="hasAcc"><p>¿Ya tenés una cuenta? Inicia sesión!</p></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/login.js"></script>
+</body>
+</html>

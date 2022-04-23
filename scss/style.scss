@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url('../img/fondo2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(12px);
+    font-family: 'Montserrat', sans-serif;
+}
+
+@import "components/index.scss";
+@import "components/login.scss";
+@import "components/mediaqueries.scss";
