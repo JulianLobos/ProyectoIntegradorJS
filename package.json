@@ -1,6 +1,10 @@
 {
   "name": "proyectointegrador",
   "version": "1.0.0",
+<<<<<<< HEAD
+=======
+  "description": "",
+>>>>>>> f0065120de6937aa70b8bc6978885d220292582d
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -20,6 +24,7 @@
   "devDependencies": {
     "node-sass": "^7.0.1",
     "nodemon": "^2.0.15"
+<<<<<<< HEAD
   },
   "dependencies": {
     "abbrev": "^1.1.1",
@@ -305,4 +310,7 @@
     "yargs-parser": "^20.2.9"
   },
   "description": ""
+=======
+  }
+>>>>>>> f0065120de6937aa70b8bc6978885d220292582d
 }
