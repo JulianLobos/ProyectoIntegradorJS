@@ -19,6 +19,36 @@ let result = localStorage.getItem('CuentaAbierta');
 let current = JSON.parse(result);
 let fechaGenerada = [];
 
+function alertaExito(){
+        Toastify({
+            text: "Operación realizada con éxito!",
+            duration: 3000,
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "#008000",
+            },
+            onClick: function(){} // Callback after click
+            }).showToast();
+}
+function alertaErr(){
+    Toastify({
+        text: "Error! Verifique los datos ingresados",
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+            background: "#d00000",
+        },
+        onClick: function(){} // Callback after click
+        }).showToast();
+}
 function generadorFecha(){
     fechaGenerada = [];
     let generador = new Date;
@@ -57,10 +87,12 @@ function retirar(){
             monto: "$"+number,
             detalle: detalleGasto,
         })
+        alertaExito();
         document.getElementById('mensajeError3').style.display= "none";
         document.getElementById('retirarSaldo').style.border= "1px solid rgb(165, 163, 163)"
         document.getElementById('detalleGasto').value = '';
     }else{
+        alertaErr();
         document.getElementById('mensajeError3').style.display= "flex";
         document.getElementById('retirarSaldo').style.border= "3px solid red"
     }
@@ -83,10 +115,12 @@ function ahorros(){
             monto: "$"+number,
             detalle: detalleAhorro,
         })
+        alertaExito()
         document.getElementById('mensajeError4').style.display= "none";
         document.getElementById('detalleAhorro').value = '';
         document.getElementById('sumarAhorros').style.border= "1px solid rgb(165, 163, 163)"
     }else{
+        alertaErr()
         document.getElementById('mensajeError4').style.display= "flex";
         document.getElementById('sumarAhorros').style.border= "3px solid red"
     }
@@ -109,10 +143,12 @@ function restarAhorros(){
             monto: "$"+number,
             detalle: detalleAhorroRetiro,
         })
+        alertaExito()
         document.getElementById('mensajeError5').style.display= "none";
         document.getElementById('restarAhorros').style.border= "1px solid rgb(165, 163, 163)"
         document.getElementById('detalleAhorroRetiro').value = '';
     }else{
+        alertaErr()
         document.getElementById('mensajeError5').style.display= "flex";
         document.getElementById('restarAhorros').style.border= "3px solid red"
     }
@@ -156,6 +192,7 @@ document.getElementById('agregarBtn').onclick = function(e){
         document.getElementById('mensajeError').style.display= "none";
         document.getElementById('agregarSaldo').style.border= "1px solid rgb(165, 163, 163)"
     }else{
+        alertaErr()
         document.getElementById('agregarForm2').style.display= "none";
         document.getElementById('mensajeError').style.display= "flex";
         document.getElementById('agregarSaldo').style.border= "3px solid red"
@@ -192,7 +229,8 @@ document.getElementById('agregarAhorroBtn').onclick = function(e){
                 monto: "$"+ (number * (ahorros/100)),
                 detalle: "Porcentaje de ahorro ingresado desde "+ categoria,
             })
-        }         
+        }
+        alertaExito() 
     }else{
         document.getElementById('mensajeError2').style.display= "flex";
         document.getElementById('agregarAhorros').style.border= "3px solid red"

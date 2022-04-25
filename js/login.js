@@ -5,6 +5,7 @@ let accCreated = document.getElementById('accCreated');
 let hasAcc = document.getElementById('hasAcc');
 let loginBtn = document.getElementById('entrarBtn');
 let crearBtn = document.getElementById('crearBtn');
+let bandera = false;
 let result;
 let users = [
     {
@@ -24,6 +25,46 @@ let users = [
         password: 'user'
     }
 ]
+
+function alertaExito(btn){
+    btn.addEventListener('click', () => {
+        if (bandera == true){
+            Toastify({
+                text: "Operación realizada con éxito!",
+                duration: 3000,
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                  background: "#008000",
+                },
+                onClick: function(){} // Callback after click
+              }).showToast();
+        }
+    })
+}
+
+function alertaErr(btn){
+    btn.addEventListener('click', () => {
+        if (bandera == false){
+            Toastify({
+                text: "Error! Completa todos los campos",
+                duration: 3000,
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                  background: "#d00000",
+                },
+                onClick: function(){} // Callback after click
+              }).showToast();
+        }
+    })
+}
 
 function currentUser(users, value) {
     result = [];
@@ -57,6 +98,7 @@ function crear(){
     let newName = document.getElementById('newName').value;
     let newLastname = document.getElementById('newLastname').value;
     if(newUser != '' && newPass != ''){
+        bandera = true;
         users.unshift({
             username: newUser,
             password: newPass,
@@ -66,7 +108,9 @@ function crear(){
         document.getElementById('exitoText').style.display='block';
         document.getElementById('errorText2').style.display='none';
     }else{
+        document.getElementById('exitoText').style.display='none';
         document.getElementById('errorText2').style.display='block';
+        bandera = false;
     }
 }
 
@@ -87,3 +131,5 @@ accCreated.onclick = () => {mostrarLogin('1');};
 hasAcc.onclick = () => {mostrarLogin('1')};
 loginBtn.onclick = () => {login()};
 crearBtn.onclick = () => {crear()};
+alertaExito(crearBtn)
+alertaErr(crearBtn)
