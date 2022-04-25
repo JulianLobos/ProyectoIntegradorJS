@@ -19,19 +19,20 @@ let result = localStorage.getItem('CuentaAbierta');
 let current = JSON.parse(result);
 let fechaGenerada = [];
 
+///////////////////     Funciones de la librería toastify     ///////////////////
 function alertaExito(){
         Toastify({
             text: "Operación realizada con éxito!",
             duration: 3000,
             newWindow: true,
             close: true,
-            gravity: "top", // `top` or `bottom`
-            position: "right", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
+            gravity: "top", 
+            position: "right", 
+            stopOnFocus: true, 
             style: {
                 background: "#008000",
             },
-            onClick: function(){} // Callback after click
+            onClick: function(){}
             }).showToast();
 }
 function alertaErr(){
@@ -40,15 +41,16 @@ function alertaErr(){
         duration: 3000,
         newWindow: true,
         close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
+        gravity: "top", 
+        position: "right", 
+        stopOnFocus: true, 
         style: {
             background: "#d00000",
         },
-        onClick: function(){} // Callback after click
+        onClick: function(){} 
         }).showToast();
 }
+
 function generadorFecha(){
     fechaGenerada = [];
     let generador = new Date;
@@ -61,6 +63,7 @@ function generadorFecha(){
     return fechaGenerada;
 }
 
+///////////////////     Traigo la info del usuario para mostrarla en el dashboard     ///////////////////
 function infoContacto(){
     let infoCont = document.getElementById('userName');
     infoCont.innerHTML = '<p>'+current[0].nombre+ ' ' +current[0].apellido+'</p>';
@@ -154,6 +157,7 @@ function restarAhorros(){
     }
 }
 
+///////////////////     Funciones para cambiar entre opciones en el menú     ///////////////////
 function mostrarDiv(num){
     document.getElementById('div1').style.display='none';
     document.getElementById('div2').style.display='none';

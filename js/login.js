@@ -19,13 +19,10 @@ let users = [
         password: 'salomon',
         nombre: 'Baltazar',
         apellido: 'Salomón',
-    },
-    {
-        username: 'user',
-        password: 'user'
     }
 ]
 
+///////////////////     Funciones de la librería toastify     ///////////////////
 function alertaExito(btn){
     btn.addEventListener('click', () => {
         if (bandera == true){
@@ -34,13 +31,13 @@ function alertaExito(btn){
                 duration: 3000,
                 newWindow: true,
                 close: true,
-                gravity: "top", // `top` or `bottom`
-                position: "right", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
+                gravity: "top", 
+                position: "right",
+                stopOnFocus: true, 
                 style: {
                   background: "#008000",
                 },
-                onClick: function(){} // Callback after click
+                onClick: function(){}
               }).showToast();
         }
     })
@@ -54,18 +51,34 @@ function alertaErr(btn){
                 duration: 3000,
                 newWindow: true,
                 close: true,
-                gravity: "top", // `top` or `bottom`
-                position: "right", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
+                gravity: "top", 
+                position: "right", 
+                stopOnFocus: true,
                 style: {
                   background: "#d00000",
                 },
-                onClick: function(){} // Callback after click
+                onClick: function(){} 
               }).showToast();
         }
     })
 }
 
+function errorInicio(){
+    Toastify({
+        text: "Nombre de usuario o contraseña incorrecta!",
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "top", 
+        position: "right",
+        stopOnFocus: true, 
+        style: {
+            background: "#d00000",
+        },
+        onClick: function(){}
+        }).showToast();
+}
+///////////////////     Tomo los datos del usuario para enviarlos al localStorage     ///////////////////
 function currentUser(users, value) {
     result = [];
     users.forEach(function(o){if (o.username == value) result.push(o);} );
@@ -87,6 +100,7 @@ function login(){
         localStorage.setItem('CuentaAbierta', resultJS);
 
     }else{
+        errorInicio();
         document.getElementById('errorText').style.display='block';
     }
 }
@@ -103,7 +117,7 @@ function crear(){
             username: newUser,
             password: newPass,
             nombre: newName,
-            apellido: newLastname
+            apellido: newLastname,
         });
         document.getElementById('exitoText').style.display='block';
         document.getElementById('errorText2').style.display='none';
