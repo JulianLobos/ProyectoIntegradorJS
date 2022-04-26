@@ -63,10 +63,13 @@ function generadorFecha(){
     return fechaGenerada;
 }
 
-///////////////////     Traigo la info del usuario para mostrarla en el dashboard     ///////////////////
+//  Hago la desestructuración del objeto current para sacar el nombre y apellido de la persona que ingresó
+//  para despues mostrarlos en el dashboard
+const {nombre, apellido} = current[0];
+
 function infoContacto(){
     let infoCont = document.getElementById('userName');
-    infoCont.innerHTML = '<p>'+current[0].nombre+ ' ' +current[0].apellido+'</p>';
+    infoCont.innerHTML = '<p>'+nombre+ ' ' +apellido+'</p>';
 }
 
 function ultMovimientos(){
