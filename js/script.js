@@ -93,6 +93,7 @@ function retirar(){
             monto: "$"+number,
             detalle: detalleGasto,
         })
+        options.series[0] += saldo;
         alertaExito();
         document.getElementById('mensajeError3').style.display= "none";
         document.getElementById('retirarSaldo').style.border= "1px solid rgb(165, 163, 163)"
