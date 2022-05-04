@@ -1,0 +1,30 @@
+[
+    {
+        "fecha": "15/03/2022 21:00hs", 
+        "tipo": "Gasto", 
+        "categoria": "Compras", 
+        "monto": "15000", 
+        "detalle": "Hice las compras del mes."
+    },
+    {
+        "fecha": "24/03/2022 20:24hs", 
+        "tipo": "Aumento de ahorros", 
+        "categoria": "Ahorro", 
+        "monto": "10000", 
+        "detalle": "Ahorro para viaje"
+    },
+    {
+        "fecha": "07/04/2022 15:07hs", 
+        "tipo": "Gasto", 
+        "categoria": "Alquiler", 
+        "monto": "45000", 
+        "detalle": "Pagué el alquiler"
+    },
+    {
+        "fecha": "25/04/2022 20:54hs", 
+        "tipo": "Aumento de ahorros", 
+        "categoria": "Ahorro", 
+        "monto": "4000", 
+        "detalle": "Ahorro para celular"
+    }
+]

@@ -73,8 +73,16 @@ function infoContacto(){
 }
 
 function ultMovimientos(){
-    movimientos.forEach(element => 
-        tabla.innerHTML += "<tr><td>" + element.fecha + "</td><td>" + element.tipo + "</td><td>" + element.monto + "</td><td>" + element.categoria + "</td><td>"+ element.detalle +"</td></tr>");
+        function listaMovimientos(movimientos){
+            for(let i of movimientos) {
+                if (i.estado == false) {
+                    tabla.innerHTML += "<tr><td>" + i.fecha + "</td><td>" + i.tipo + "</td><td>" + i.monto + "</td><td>" + i.categoria + "</td><td>"+ i.detalle +"</td></tr>";
+                    // el estado es para que declarar que ya está visible en la tabla de movimientos y para que no se muestre repetidamente.
+                    i.estado = true;
+                }
+            }
+        }
+        listaMovimientos(movimientos);
 }
 
 function retirar(){
@@ -92,8 +100,21 @@ function retirar(){
             tipo: 'Gasto',
             monto: "$"+number,
             detalle: detalleGasto,
+            estado: false,
         })
-        options.series[0] += saldo;
+        if(categoria == 'Compras'){
+            options.series[0] += number;
+        } else if(categoria == 'Alquiler'){
+            options.series[1] += number;
+        } else if(categoria == 'Educacion'){
+            options.series[2] += number;
+        } else if(categoria == 'Suscripciones'){
+            options.series[3] += number;
+        } else if(categoria == 'Impuestos'){
+            options.series[4] += number;
+        } else {
+            options.series[5] += number;
+        }
         alertaExito();
         document.getElementById('mensajeError3').style.display= "none";
         document.getElementById('retirarSaldo').style.border= "1px solid rgb(165, 163, 163)"
@@ -121,6 +142,7 @@ function ahorros(){
             tipo: 'Aumento de ahorros',
             monto: "$"+number,
             detalle: detalleAhorro,
+            estado: false,
         })
         alertaExito()
         document.getElementById('mensajeError4').style.display= "none";
@@ -149,6 +171,7 @@ function restarAhorros(){
             tipo: 'Retiro de ahorros',
             monto: "$"+number,
             detalle: detalleAhorroRetiro,
+            estado: false,
         })
         alertaExito()
         document.getElementById('mensajeError5').style.display= "none";
@@ -170,8 +193,8 @@ function mostrarDiv(num){
     document.getElementById('div5').style.display='none';
     document.getElementById('div'+num).style.display='flex'
     if(num == 5){
-        tabla.innerHTML = "";
-        tabla.innerHTML += "<tr><th>Fecha</th><th>Tipo</th><th>Monto</th><th>Categoría</th><th>Detalles</th></tr>"
+        /*tabla.innerHTML = "";
+        tabla.innerHTML += "<tr><th>Fecha</th><th>Tipo</th><th>Monto</th><th>Categoría</th><th>Detalles</th></tr>"*/
         ultMovimientos();
     }
 }
@@ -228,6 +251,7 @@ document.getElementById('agregarAhorroBtn').onclick = function(e){
             tipo: 'Ingreso',
             monto: "$"+ (number - (number * (ahorros/100))),
             detalle: detalleIngreso,
+            estado: false,
         })
         if (ahorro > 0){
             movimientos.unshift({
@@ -236,6 +260,7 @@ document.getElementById('agregarAhorroBtn').onclick = function(e){
                 tipo: 'Ingreso',
                 monto: "$"+ (number * (ahorros/100)),
                 detalle: "Porcentaje de ahorro ingresado desde "+ categoria,
+                estado: false,
             })
         }
         alertaExito() 
