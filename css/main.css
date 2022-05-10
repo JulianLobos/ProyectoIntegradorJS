@@ -99,7 +99,7 @@ body {
         body .agregarSaldo form select:focus {
           outline: none; }
         body .agregarSaldo form select option {
-          background-color: #fefae0; }
+          background-color: #fafafa; }
       body .agregarSaldo form input {
         margin: 8px 0;
         width: 200px;
@@ -154,7 +154,7 @@ body {
         body #div2 form select:focus, body #div3 form select:focus, body #div4 form select:focus {
           outline: none; }
         body #div2 form select option, body #div3 form select option, body #div4 form select option {
-          background-color: #fefae0; }
+          background-color: #fafafa; }
       body #div2 form input, body #div3 form input, body #div4 form input {
         margin: 8px 0;
         width: 200px;
@@ -322,10 +322,11 @@ body .loginsignup {
     display: none; }
 
 body .videoContainer #myVideo {
-  width: 100%;
+  width: 100vw;
   height: 100%;
   position: absolute;
   top: 0;
+  bottom: 0;
   filter: blur(2px);
   z-index: -1;
   object-fit: cover; }
@@ -389,5 +390,5 @@ body .videoContainer #myVideo {
       padding: 0; } }
 
 body {
-  background-color: #fefae0;
+  background-color: #fafafa;
   font-family: 'Montserrat', sans-serif; }
