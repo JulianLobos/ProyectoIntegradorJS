@@ -16,7 +16,7 @@ body{
             align-items: center;
             background-color: $color-principal;
             color: white;
-            border-radius: 25px;
+            border-radius: 5px;
             margin: 10px;
             p{
                 span{
@@ -30,7 +30,7 @@ body{
         .userName{
             background-color: $color-principal;
             color: white;
-            border-radius: 25px;
+            border-radius: 5px;
             margin: 10px;
             display: flex;
             justify-content: center;
@@ -96,6 +96,7 @@ body{
                 display: none; 
                 margin: 0 0 15px 0;
             }
+
             select{
                 margin: 8px 0;
                 width: 200px;
@@ -235,10 +236,10 @@ body{
                 color: white;
                 tr{
                     th:nth-child(1){
-                        border-top-left-radius: 25px;
+                        border-top-left-radius: 15px;
                     }
                     th:nth-child(5){
-                        border-top-right-radius: 25px;
+                        border-top-right-radius: 15px;
                     }
                 }
                 &:nth-child(even){
@@ -248,10 +249,10 @@ body{
                 &:last-child{
                     tr{
                         td:nth-child(1){
-                            border-bottom-left-radius: 25px;
+                            border-bottom-left-radius: 15px;
                         }
                         td:nth-child(5){
-                            border-bottom-right-radius: 25px;
+                            border-bottom-right-radius: 15px;
                         }
                     }
                 }

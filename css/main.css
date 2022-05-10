@@ -21,7 +21,7 @@ body {
       align-items: center;
       background-color: #0077b6;
       color: white;
-      border-radius: 25px;
+      border-radius: 5px;
       margin: 10px; }
       body header .saldo p span, body header .ahorros p span {
         font-weight: 600; }
@@ -30,7 +30,7 @@ body {
     body header .userName {
       background-color: #0077b6;
       color: white;
-      border-radius: 25px;
+      border-radius: 5px;
       margin: 10px;
       display: flex;
       justify-content: center;
@@ -202,16 +202,16 @@ body {
         background-color: #0077b6;
         color: white; }
         body .tablaMovimientos table tbody tr th:nth-child(1) {
-          border-top-left-radius: 25px; }
+          border-top-left-radius: 15px; }
         body .tablaMovimientos table tbody tr th:nth-child(5) {
-          border-top-right-radius: 25px; }
+          border-top-right-radius: 15px; }
         body .tablaMovimientos table tbody:nth-child(even) {
           color: white;
           background-color: #0096c7; }
         body .tablaMovimientos table tbody:last-child tr td:nth-child(1) {
-          border-bottom-left-radius: 25px; }
+          border-bottom-left-radius: 15px; }
         body .tablaMovimientos table tbody:last-child tr td:nth-child(5) {
-          border-bottom-right-radius: 25px; }
+          border-bottom-right-radius: 15px; }
     body .tablaMovimientos th, body .tablaMovimientos td {
       padding: 5px 15px; }
   body #ceroMovimientos {
@@ -342,7 +342,7 @@ body .videoContainer #myVideo {
         height: 50px;
         flex-wrap: wrap;
         flex-direction: column;
-        padding: 5px;
+        padding: 5px 15px;
         border-radius: 15px; }
         body header .saldo p:nth-child(2), body header .ahorros p:nth-child(2) {
           margin-left: 0px; }

@@ -77,7 +77,7 @@ var options = {
     });
   
     tippy('#opt2', {
-      content: 'Retirar dinero',
+      content: 'Registrar gasto',
       placement: 'right',
     });
   
@@ -102,7 +102,7 @@ var options = {
     });
   
     tippy('#opt2', {
-      content: 'Retirar dinero',
+      content: 'Registrar gasto',
       placement: 'top',
     });
   
