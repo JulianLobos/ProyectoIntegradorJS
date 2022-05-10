@@ -15,56 +15,48 @@
 <body>
     <header>
         <div class="saldo">
-            <p>Saldo</p>
-            <p>$ <span id="saldo">0</span></p>
-            <p>Disponibles</p>
+            <p>Dinero</p>
+            <p>$<span id="saldo">0</span></p>
         </div>
         <div class="userName" id="userName">
-            <p>Julian Lobos</p>
         </div>
         <div class="ahorros">
             <p>Ahorros</p>
-            <p>$ <span id="ahorros">0</span></p>
+            <p>$<span id="ahorros">0</span></p>
         </div>
     </header>
 
     <div class="navBar">
         <div class="option" id="opt1">
             <img src="img/plus-solid.svg" alt="icono suma">
-            <p>Agregar Dinero</p>
         </div>
         <div class="option" id="opt2">
             <img src="img/minus-solid.svg" alt="icono resta">
-            <p>Retirar Saldo</p>
         </div>
         <div class="option" id="opt3">
             <img src="img/ahorroPlus.svg" alt="alcancía icono">
-            <p>Agregar Ahorros</p>
         </div>
         <div class="option" id="opt4">
             <img src="img/ahorroMinus.svg" alt="alcancía icono">
-            <p>Retirar Ahorros</p>
         </div>
         <div class="option" id="mov">
             <img src="img/movimientos.svg" alt="list icono">
-            <p>Ver movimientos</p>
         </div>
     </div>
 
     <div class="agregarSaldo" id="div1">
         <form>
             <label for="agregarSaldo">¿Cuánto dinero quiere ingresar?</label>
-            <input type="number" value="0" id="agregarSaldo" autofocus>
+            <input type="number" id="agregarSaldo" autofocus>
             <input type="submit" id="agregarBtn" value="Agregar" class="inputBtn">
             <p class="mensajeError" id="mensajeError">Debe ingresar una cantidad positiva para depositar.</p>
         </form>
         
         <form id="agregarForm2">
             <label for="agregarAhorros">¿Qué porcentaje de ese dinero quiere destinarlo a ahorros?</label>
-            <input type="number" value="0" max="100" min="0" id="agregarAhorros">
+            <input type="number" max="100" min="0" id="agregarAhorros">
             <label for="tipoIngreso">Seleccione el tipo de ingreso: </label>
             <select name="tipoIngreso" id="tipoIngreso">
-                <option value=""></option>
                 <option value="Sueldo">Sueldo</option>
                 <option value="Freelance">Freelance</option>
                 <option value="Venta">Venta</option>
@@ -82,7 +74,7 @@
     <div id="div2">
         <form>
             <label for="retirarSaldo">¿Cuánto dinero quiere retirar del saldo?</label>
-            <input type="number" value="0" id="retirarSaldo">
+            <input type="number" id="retirarSaldo">
             <label for="tipoGasto">Seleccione la categoría del gasto:</label>
             <select name="tipoGasto" id="tipoGasto">
                 <option value="Compras">Compras</option>
@@ -101,7 +93,7 @@
     <div id="div3">
         <form>
             <label for="sumarAhorros">¿Cuánto dinero de su saldo disponible quiere transferir a ahorros?</label>
-            <input type="number" value="0" id="sumarAhorros">
+            <input type="number" id="sumarAhorros">
             <label for="detalleAhorro">Detalle: </label>
             <input type="text" name="detalleAhorro" id="detalleAhorro">
             <input type="submit" id="sumarAhorrosBtn" value="Agregar" class="inputBtn">
@@ -111,7 +103,7 @@
     <div id="div4">
         <form>
             <label for="restarAhorros">¿Cuánto dinero de sus ahorros quiere transferir a saldo?</label>
-            <input type="number" value="0" id="restarAhorros">
+            <input type="number" id="restarAhorros">
             <label for="detalleAhorroRetiro">Detalle: </label>
             <input type="text" name="detalleAhorroRetiro" id="detalleAhorroRetiro">
             <input type="submit" id="restarAhorrosBtn" value="Retirar" class="inputBtn">
@@ -120,9 +112,16 @@
     </div>
 
     <div class="tablaMovimientos" id="div5">
-        <div class="chartContainer">
-            <p class="chartTitle">Mis gastos</p>
-            <div id="chart">
+        <div class="chartsContainer" id="chartsContainer">
+            <div class="chartContainer">
+                <p class="chartTitle">Mis gastos</p>
+                <div id="chart">
+                </div>
+            </div>
+            <div class="chartContainer">
+                <p class="chartTitle">Mis Ingresos</p>
+                <div id="chart1">
+                </div>
             </div>
         </div>
         <table id="table">
@@ -136,9 +135,15 @@
             </tr>
         </table>
     </div>
+    <div class="ceroMovimientos" id="ceroMovimientos">
+        <p>Usted todavía no realizó movimientos en su cuenta.</p>
+        <p>Cuando se detecte un cambio se verá reflejado en esta sección.</p>
+    </div>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script src="js/chart.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/chart.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script> 
 </body>
 </html>

@@ -4,73 +4,74 @@
   box-sizing: border-box; }
 
 body {
-  background-image: url("../img/fondo2.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  backdrop-filter: blur(12px);
-  font-family: 'Montserrat', sans-serif; }
-
-body {
-  color: #fafafa;
+  color: #0f0f0f;
   height: auto;
   font-weight: 600;
   min-height: 100vh;
   height: 100%; }
   body header {
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    padding-left: 80px; }
     body header .saldo, body header .ahorros {
-      margin: 20px;
-      width: 200px;
-      height: 100px;
-      border-radius: 5px;
+      text-align: center;
+      padding: 15px;
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-      background-color: rgba(255, 255, 255, 0.226); }
+      background-color: #0077b6;
+      color: white;
+      border-radius: 25px;
+      margin: 10px; }
       body header .saldo p span, body header .ahorros p span {
         font-weight: 600; }
+      body header .saldo p:nth-child(2), body header .ahorros p:nth-child(2) {
+        margin-left: 10px; }
     body header .userName {
-      margin: 20px;
-      width: 200px;
-      height: 60px;
-      border-radius: 5px;
+      background-color: #0077b6;
+      color: white;
+      border-radius: 25px;
+      margin: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-      background-color: rgba(255, 255, 255, 0.226); }
+      padding: 15px; }
   body .navBar {
-    margin: 30px 30px 60px 30px;
+    background-color: #0077b6;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-evenly;
-    align-items: center; }
+    align-items: center;
+    width: 80px;
+    max-height: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; }
     body .navBar .option {
+      width: 100%;
       font-size: 0.85em;
-      margin: 20px;
       padding: 5px;
       text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 150px;
-      height: 150px;
-      border-radius: 5px;
-      background-color: rgba(255, 255, 255, 0.226);
       cursor: pointer;
       transition: all 0.3s ease; }
       body .navBar .option img {
         width: 35px;
         height: 35px;
         margin-bottom: 8px;
-        filter: invert(100%) sepia(3%) saturate(12%) hue-rotate(93deg) brightness(110%) contrast(96%); }
-      body .navBar .option:hover {
-        transform: scale(1.1);
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; }
+        filter: invert(92%) sepia(6%) saturate(100%) hue-rotate(168deg) brightness(104%) contrast(90%);
+        transition: all 0.5s ease; }
+      body .navBar .option:hover img {
+        transform: scale(1.2); }
   body .agregarSaldo {
+    padding-left: 80px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -93,13 +94,12 @@ body {
         background-color: transparent;
         border-radius: 5px;
         border: 1px solid #a5a3a3;
-        color: white;
         font-family: 'Montserrat', sans-serif;
         padding: 10px; }
         body .agregarSaldo form select:focus {
           outline: none; }
         body .agregarSaldo form select option {
-          background-color: #191919; }
+          background-color: #fefae0; }
       body .agregarSaldo form input {
         margin: 8px 0;
         width: 200px;
@@ -107,7 +107,6 @@ body {
         background-color: transparent;
         border-radius: 5px;
         border: 1px solid #a5a3a3;
-        color: white;
         font-family: 'Montserrat', sans-serif;
         padding: 10px; }
         body .agregarSaldo form input:focus {
@@ -121,11 +120,13 @@ body {
         font-family: 'Montserrat', sans-serif;
         transition: all 0.2s ease; }
         body .agregarSaldo form .inputBtn:hover {
-          background-color: #49813d;
-          box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; }
+          color: white;
+          background-color: #65b453;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; }
     body .agregarSaldo form:nth-child(2) {
       display: none; }
   body #div2, body #div3, body #div4 {
+    padding-left: 80px;
     display: none;
     justify-content: center;
     align-items: center;
@@ -148,13 +149,12 @@ body {
         background-color: transparent;
         border-radius: 5px;
         border: 1px solid #a5a3a3;
-        color: white;
         font-family: 'Montserrat', sans-serif;
         padding: 10px; }
         body #div2 form select:focus, body #div3 form select:focus, body #div4 form select:focus {
           outline: none; }
         body #div2 form select option, body #div3 form select option, body #div4 form select option {
-          background-color: #191919; }
+          background-color: #fefae0; }
       body #div2 form input, body #div3 form input, body #div4 form input {
         margin: 8px 0;
         width: 200px;
@@ -162,7 +162,6 @@ body {
         background-color: transparent;
         border-radius: 5px;
         border: 1px solid #a5a3a3;
-        color: white;
         font-family: 'Montserrat', sans-serif;
         padding: 10px; }
         body #div2 form input:focus, body #div3 form input:focus, body #div4 form input:focus {
@@ -176,11 +175,12 @@ body {
         font-weight: 600;
         transition: all 0.2s ease; }
         body #div2 form .inputBtn:hover, body #div3 form .inputBtn:hover, body #div4 form .inputBtn:hover {
-          background-color: #49813d;
-          box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; }
+          color: white;
+          background-color: #65b453;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; }
+  body #div5 {
+    padding-left: 80px; }
   body .tablaMovimientos {
-    margin: 50px 0 0 0;
-    padding: 0 0 100px 0;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -188,27 +188,50 @@ body {
     align-items: center;
     display: none;
     text-align: center; }
+    body .tablaMovimientos .chartsContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center; }
+      body .tablaMovimientos .chartsContainer .chartContainer {
+        width: 400px; }
     body .tablaMovimientos table {
       margin: 15px;
-      background-color: rgba(255, 255, 255, 0.144); }
-    body .tablaMovimientos table, body .tablaMovimientos th, body .tablaMovimientos td {
-      border: 1px solid #FFF;
-      border-collapse: collapse; }
+      border-spacing: 5px; }
+      body .tablaMovimientos table tbody {
+        background-color: #0077b6;
+        color: white; }
+        body .tablaMovimientos table tbody tr th:nth-child(1) {
+          border-top-left-radius: 25px; }
+        body .tablaMovimientos table tbody tr th:nth-child(5) {
+          border-top-right-radius: 25px; }
+        body .tablaMovimientos table tbody:nth-child(even) {
+          color: white;
+          background-color: #0096c7; }
+        body .tablaMovimientos table tbody:last-child tr td:nth-child(1) {
+          border-bottom-left-radius: 25px; }
+        body .tablaMovimientos table tbody:last-child tr td:nth-child(5) {
+          border-bottom-right-radius: 25px; }
     body .tablaMovimientos th, body .tablaMovimientos td {
       padding: 5px 15px; }
-  body footer {
-    display: flex;
+  body #ceroMovimientos {
+    display: none;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #ccc;
-    font-size: 0.75em;
-    padding: 5px; }
+    height: 70vh;
+    width: 100%;
+    padding-left: 80px;
+    font-size: 1.25em;
+    color: #d34545;
+    text-align: center; }
+    body #ceroMovimientos p {
+      margin: 0 15px; }
 
-#chart {
-  color: white;
+#chart, #chart1 {
   max-width: 300px;
   width: 100%;
-  height: 300px;
+  height: auto;
   margin: 35px auto; }
 
 body .loginsignup {
@@ -217,7 +240,7 @@ body .loginsignup {
   justify-content: center;
   align-items: center;
   z-index: 1;
-  color: white; }
+  color: black; }
   body .loginsignup .login, body .loginsignup .signUp {
     display: inherit;
     justify-content: center;
@@ -225,7 +248,7 @@ body .loginsignup {
     width: 500px;
     height: auto;
     border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.226);
+    background-color: rgba(255, 255, 255, 0.75);
     box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px; }
     body .loginsignup .login .form, body .loginsignup .signUp .form {
       padding: 50px 0px;
@@ -249,13 +272,15 @@ body .loginsignup {
           height: 30px;
           border-radius: 5px;
           border: 1px solid #a5a3a3;
-          color: white;
           font-family: 'Montserrat', sans-serif;
           padding: 10px;
           transition: all 0.1s ease; }
           body .loginsignup .login .form form input:active, body .loginsignup .login .form form input:focus, body .loginsignup .signUp .form form input:active, body .loginsignup .signUp .form form input:focus {
             outline: none; }
         body .loginsignup .login .form form #entrarBtn, body .loginsignup .signUp .form form #entrarBtn {
+          background-color: #0077b6;
+          color: white;
+          border: none;
           font-family: 'Montserrat', sans-serif;
           font-weight: 600;
           margin: 15px 0 0 0;
@@ -263,16 +288,21 @@ body .loginsignup {
           cursor: pointer;
           transition: all 0.3s ease; }
           body .loginsignup .login .form form #entrarBtn:hover, body .loginsignup .signUp .form form #entrarBtn:hover {
-            transform: scale(1.1); }
+            background-color: #0096c7;
+            transform: scale(1.08); }
         body .loginsignup .login .form form #crearBtn, body .loginsignup .signUp .form form #crearBtn {
           font-family: 'Montserrat', sans-serif;
           font-weight: 600;
           margin: 15px 0 0 0;
           padding: 5px 20px;
           cursor: pointer;
-          transition: all 0.3s ease; }
+          transition: all 0.3s ease;
+          background-color: #0077b6;
+          color: white;
+          border: none; }
           body .loginsignup .login .form form #crearBtn:hover, body .loginsignup .signUp .form form #crearBtn:hover {
-            transform: scale(1.1); }
+            background-color: #0096c7;
+            transform: scale(1.08); }
       body .loginsignup .login .form .error, body .loginsignup .signUp .form .error {
         display: none;
         margin: 15px 0 0 0;
@@ -287,35 +317,77 @@ body .loginsignup {
         text-align: center; }
         body .loginsignup .login .form .newAccount a, body .loginsignup .login .form .hasAccount a, body .loginsignup .signUp .form .newAccount a, body .loginsignup .signUp .form .hasAccount a {
           text-decoration: none;
-          color: #FFF; }
+          color: black; }
   body .loginsignup .signUp {
     display: none; }
 
-@media (max-width: 576px) {
+body .videoContainer #myVideo {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  filter: blur(2px);
+  z-index: -1;
+  object-fit: cover; }
+
+@media (max-width: 657px) {
   body {
     font-size: 0.70em; }
     body header {
+      padding: 0;
       text-align: center; }
       body header .saldo, body header .ahorros {
-        width: 100px;
-        height: 50px; }
+        width: auto;
+        max-width: 120px;
+        height: 50px;
+        flex-wrap: wrap;
+        flex-direction: column;
+        padding: 5px;
+        border-radius: 15px; }
+        body header .saldo p:nth-child(2), body header .ahorros p:nth-child(2) {
+          margin-left: 0px; }
+      body header .userName {
+        height: 50px;
+        border-radius: 15px; }
     body .navBar {
-      margin: 10px; }
+      all: unset;
+      background-color: #0077b6;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 1;
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px; }
       body .navBar .option {
         font-size: 0.5em;
         width: 45px;
         height: 45px;
         text-align: center;
         padding: 15px;
-        margin: 10px; }
+        margin: 5px; }
         body .navBar .option img {
-          width: 15px;
+          width: 25px;
           height: auto;
           margin: 0; }
+    body #div1, body #div2, body #div3, body #div4, body #div5 {
+      padding: 0 0 80px 0; }
     body .loginsignup .login, body .loginsignup .signUp {
       margin: 0px 40px; }
     body .tablaMovimientos {
       margin: 0;
       text-align: center; }
+      body .tablaMovimientos .chartsContainer {
+        flex-direction: column; }
+        body .tablaMovimientos .chartsContainer .chartContainer {
+          width: 300px; }
       body .tablaMovimientos th, body .tablaMovimientos td {
-        padding: 0; } }
+        padding: 2px; }
+    body #ceroMovimientos {
+      padding: 0; } }
+
+body {
+  background-color: #fefae0;
+  font-family: 'Montserrat', sans-serif; }

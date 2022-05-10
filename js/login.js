@@ -15,10 +15,16 @@ let users = [
         apellido: 'Lobos',
     },
     {
-        username: 'baltazar',
-        password: 'salomon',
-        nombre: 'Baltazar',
-        apellido: 'Salomón',
+        username: 'user',
+        password: 'user',
+        nombre: 'Sin',
+        apellido: 'Nombre',
+    },
+    {
+        username: 'wen',
+        password: 'mateos',
+        nombre: 'Wenceslao',
+        apellido: 'Mateos',
     }
 ]
 

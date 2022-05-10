@@ -73,16 +73,20 @@ function infoContacto(){
 }
 
 function ultMovimientos(){
-        function listaMovimientos(movimientos){
-            for(let i of movimientos) {
-                if (i.estado == false) {
-                    tabla.innerHTML += "<tr><td>" + i.fecha + "</td><td>" + i.tipo + "</td><td>" + i.monto + "</td><td>" + i.categoria + "</td><td>"+ i.detalle +"</td></tr>";
-                    // el estado es para que declarar que ya está visible en la tabla de movimientos y para que no se muestre repetidamente.
-                    i.estado = true;
-                }
+    if (movimientos == ''){
+        document.getElementById('div5').style.display='none';
+        document.getElementById('ceroMovimientos').style.display='flex'
+    }
+    function listaMovimientos(movimientos){
+        for(let i of movimientos) {
+            if (i.estado == false) {
+                tabla.innerHTML += "<tr><td>" + i.fecha + "</td><td>" + i.tipo + "</td><td>" + i.monto + "</td><td>" + i.categoria + "</td><td>"+ i.detalle +"</td></tr>";
+                // el estado es para que declarar que ya está visible en la tabla de movimientos y para que no se muestre repetidamente.
+                i.estado = true;
             }
         }
-        listaMovimientos(movimientos);
+    }
+    listaMovimientos(movimientos);
 }
 
 function retirar(){
@@ -92,7 +96,7 @@ function retirar(){
     if(number <= saldo && number > 0){
         saldo -= number;
         saldoHtml.innerHTML = saldo;
-        document.getElementById('retirarSaldo').value = 0;
+        document.getElementById('retirarSaldo').value = "";
         fecha = generadorFecha();
         movimientos.unshift({
             fecha: fecha,
@@ -191,10 +195,9 @@ function mostrarDiv(num){
     document.getElementById('div3').style.display='none';
     document.getElementById('div4').style.display='none';
     document.getElementById('div5').style.display='none';
+    document.getElementById('ceroMovimientos').style.display='none'
     document.getElementById('div'+num).style.display='flex'
     if(num == 5){
-        /*tabla.innerHTML = "";
-        tabla.innerHTML += "<tr><th>Fecha</th><th>Tipo</th><th>Monto</th><th>Categoría</th><th>Detalles</th></tr>"*/
         ultMovimientos();
     }
 }
@@ -240,8 +243,8 @@ document.getElementById('agregarAhorroBtn').onclick = function(e){
         saldo += number - (number * (ahorros/100));
         saldoHtml.innerHTML = saldo;
         ahorroHtml.innerHTML = ahorro;
-        document.getElementById('agregarAhorros').value = 0;
-        document.getElementById('agregarSaldo').value = 0;
+        document.getElementById('agregarAhorros').value = "";
+        document.getElementById('agregarSaldo').value = "";
         document.getElementById('detalleIngreso').value = "";
         document.getElementById('agregarForm2').style.display= "none";
         fecha = generadorFecha();
@@ -253,7 +256,23 @@ document.getElementById('agregarAhorroBtn').onclick = function(e){
             detalle: detalleIngreso,
             estado: false,
         })
-        if (ahorro > 0){
+        let ingreso = number - (number * (ahorros/100));
+        if(categoria == 'Sueldo'){
+            options2.series[0] += ingreso;
+        } else if (categoria == 'Freelance'){
+            options2.series[1] += ingreso;
+        } else if (categoria == 'Donación'){
+            options2.series[2] += ingreso;
+        } else if (categoria == 'Venta'){
+            options2.series[3] += ingreso;
+        } else if (categoria == 'Trabajo Extra'){
+            options2.series[4] += ingreso;
+        } else if (categoria == 'Préstamo'){
+            options2.series[5] += ingreso;
+        } else if (categoria == 'Otro'){
+            options2.series[6] += ingreso;
+        }
+        if (ahorros > 0){
             movimientos.unshift({
                 fecha: fecha,
                 categoria: "Ahorro",
