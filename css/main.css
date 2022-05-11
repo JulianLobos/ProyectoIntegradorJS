@@ -372,7 +372,7 @@ body .loginsignup {
 body .videoContainer #myVideo {
   width: 100vw;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   filter: blur(2px);
