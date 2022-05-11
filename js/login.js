@@ -7,26 +7,47 @@ let loginBtn = document.getElementById('entrarBtn');
 let crearBtn = document.getElementById('crearBtn');
 let bandera = false;
 let result;
+let usuariosJSON = localStorage.getItem('usuarios')
+let usuarios = JSON.parse(usuariosJSON);
 let users = [
     {
         username: 'julian',
         password: 'lobos',
         nombre: 'Julian',
         apellido: 'Lobos',
+        saldo: 0,
+        ahorro: 0,
+        movimientos: [],
+        series: [0, 0, 0, 0, 0, 0],
+        series2: [0, 0, 0, 0, 0, 0, 0],
     },
     {
         username: 'user',
         password: 'user',
         nombre: 'Sin',
         apellido: 'Nombre',
+        saldo: 0,
+        ahorro: 0,
+        movimientos: [],
+        series: [0, 0, 0, 0, 0, 0],
+        series2: [0, 0, 0, 0, 0, 0, 0],
     },
     {
         username: 'wen',
         password: 'mateos',
         nombre: 'Wenceslao',
         apellido: 'Mateos',
+        saldo: 0,
+        ahorro: 0,
+        movimientos: [],
+        series: [0, 0, 0, 0, 0, 0],
+        series2: [0, 0, 0, 0, 0, 0, 0],
     }
 ]
+
+if(usuarios != null){
+    users = usuarios
+}
 
 ///////////////////     Funciones de la librería toastify     ///////////////////
 function alertaExito(btn){
@@ -101,10 +122,17 @@ function login(){
         localStorage.setItem('password', password);
 
         currentUser(users, username);
-        console.log(result)
         let resultJS = JSON.stringify(result);
         localStorage.setItem('CuentaAbierta', resultJS);
 
+    }else if((usuarios.some((el) => el.username === username && el.password === password))){
+        document.location.href = 'home.html';
+        localStorage.setItem('username', username);
+        localStorage.setItem('password', password);
+
+        currentUser(users, username);
+        let resultJS = JSON.stringify(result);
+        localStorage.setItem('CuentaAbierta', resultJS);        
     }else{
         errorInicio();
         document.getElementById('errorText').style.display='block';
@@ -124,7 +152,14 @@ function crear(){
             password: newPass,
             nombre: newName,
             apellido: newLastname,
+            saldo: 0,
+            ahorro: 0,
+            movimientos: [],
+            series: [0, 0, 0, 0, 0, 0],
+            series2: [0, 0, 0, 0, 0, 0, 0],
         });
+        usersString = JSON.stringify(users);
+        localStorage.setItem('usuarios', usersString);
         document.getElementById('exitoText').style.display='block';
         document.getElementById('errorText2').style.display='none';
     }else{

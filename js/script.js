@@ -18,6 +18,20 @@ let movimientos = [];
 let result = localStorage.getItem('CuentaAbierta');
 let current = JSON.parse(result);
 let fechaGenerada = [];
+if(current[0].movimientos != []){
+    movimientos = current[0].movimientos;
+    for(let i of movimientos){
+        i.estado = false;
+    }
+}
+if(current[0].saldo != 0){
+    saldo = current[0].saldo;
+    saldoHtml.innerHTML = saldo;
+}
+if(current[0].ahorro != 0){
+    ahorro = current[0].ahorro;
+    ahorroHtml.innerHTML = ahorro;
+}
 
 ///////////////////     Funciones de la librería toastify     ///////////////////
 function alertaExito(){
@@ -72,10 +86,29 @@ function infoContacto(){
     infoCont.innerHTML = '<p>'+nombre+ ' ' +apellido+'</p>';
 }
 
+function guardarDatos(){
+    let datosLocalJSON = localStorage.getItem('usuarios');
+    let datosLocal = JSON.parse(datosLocalJSON);
+    for(let i=0; i < datosLocal.length; i++){
+        if(current[0].username == datosLocal[i].username){
+            datosLocal[i].saldo = current[0].saldo;
+            datosLocal[i].ahorro = current[0].ahorro;
+            datosLocal[i].movimientos = current[0].movimientos;
+            datosLocal[i].series = current[0].series
+            datosLocal[i].series2 = current[0].series2
+        }
+    }
+    datosString = JSON.stringify(datosLocal);
+    localStorage.setItem('usuarios', datosString);
+}
+
 function ultMovimientos(){
     if (movimientos == ''){
         document.getElementById('div5').style.display='none';
         document.getElementById('ceroMovimientos').style.display='flex'
+    }
+    for(let i of movimientos){
+        i.estado = false;
     }
     function listaMovimientos(movimientos){
         for(let i of movimientos) {
@@ -98,6 +131,7 @@ function retirar(){
         saldoHtml.innerHTML = saldo;
         document.getElementById('retirarSaldo').value = "";
         fecha = generadorFecha();
+        current[0].saldo -= number;
         movimientos.unshift({
             fecha: fecha,
             categoria: categoria,
@@ -106,6 +140,7 @@ function retirar(){
             detalle: detalleGasto,
             estado: false,
         })
+        current[0].movimientos = movimientos;
         if(categoria == 'Compras'){
             options.series[0] += number;
         } else if(categoria == 'Alquiler'){
@@ -119,6 +154,8 @@ function retirar(){
         } else {
             options.series[5] += number;
         }
+        current[0].series = options.series;
+        guardarDatos();
         alertaExito();
         document.getElementById('mensajeError3').style.display= "none";
         document.getElementById('retirarSaldo').style.border= "1px solid rgb(165, 163, 163)"
@@ -140,6 +177,8 @@ function ahorros(){
         ahorroHtml.innerHTML = ahorro;
         document.getElementById('sumarAhorros').value = 0;
         fecha = generadorFecha();
+        current[0].ahorro += number;
+        current[0].saldo -= number;
         movimientos.unshift({
             fecha: fecha,
             categoria: "Ahorro",
@@ -148,6 +187,8 @@ function ahorros(){
             detalle: detalleAhorro,
             estado: false,
         })
+        current[0].movimientos = movimientos;
+        guardarDatos();
         alertaExito()
         document.getElementById('mensajeError4').style.display= "none";
         document.getElementById('detalleAhorro').value = '';
@@ -167,6 +208,8 @@ function restarAhorros(){
         ahorro -= number;
         saldoHtml.innerHTML = saldo;
         ahorroHtml.innerHTML = ahorro;
+        current[0].saldo += number;
+        current[0].ahorro -= number;
         document.getElementById('restarAhorros').value = 0;
         fecha = generadorFecha();
         movimientos.unshift({
@@ -177,6 +220,8 @@ function restarAhorros(){
             detalle: detalleAhorroRetiro,
             estado: false,
         })
+        current[0].movimientos = movimientos;
+        guardarDatos();
         alertaExito()
         document.getElementById('mensajeError5').style.display= "none";
         document.getElementById('restarAhorros').style.border= "1px solid rgb(165, 163, 163)"
@@ -256,6 +301,7 @@ document.getElementById('agregarAhorroBtn').onclick = function(e){
             detalle: detalleIngreso,
             estado: false,
         })
+        current[0].saldo += number - (number * (ahorros/100));
         let ingreso = number - (number * (ahorros/100));
         if(categoria == 'Sueldo'){
             options2.series[0] += ingreso;
@@ -272,6 +318,7 @@ document.getElementById('agregarAhorroBtn').onclick = function(e){
         } else if (categoria == 'Otro'){
             options2.series[6] += ingreso;
         }
+        current[0].series2 = options2.series;
         if (ahorros > 0){
             movimientos.unshift({
                 fecha: fecha,
@@ -281,8 +328,11 @@ document.getElementById('agregarAhorroBtn').onclick = function(e){
                 detalle: "Porcentaje de ahorro ingresado desde "+ categoria,
                 estado: false,
             })
+            current[0].ahorro += number * (ahorros/100);
         }
-        alertaExito() 
+        current[0].movimientos = movimientos;
+        guardarDatos();
+        alertaExito();
     }else{
         document.getElementById('mensajeError2').style.display= "flex";
         document.getElementById('agregarAhorros').style.border= "3px solid red"

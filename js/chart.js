@@ -35,89 +35,89 @@ var options = {
       }
     }
   }]
-  };
+};
+options.series = current[0].series
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+chart.render();
 
-  var chart = new ApexCharts(document.querySelector("#chart"), options);
-  chart.render();
+// chart2
 
-  // chart2
-
-  var options2 = {
-    series: [0, 0, 0, 0, 0, 0, 0],
+var options2 = {
+  series: [0, 0, 0, 0, 0, 0, 0],
+  chart: {
+      width: 380,
+      type: 'pie',
+      foreColor: '#000',
+},
+labels: ['Sueldo', 'Freelance', 'Donación', 'Venta', 'Trabajo Extra', 'Préstamo', 'Otro'],
+responsive: [{
+  breakpoint: 480,
+  options: {
     chart: {
-        width: 380,
-        type: 'pie',
-        foreColor: '#000',
-  },
-  labels: ['Sueldo', 'Freelance', 'Donación', 'Venta', 'Trabajo Extra', 'Préstamo', 'Otro'],
-  responsive: [{
-    breakpoint: 480,
-    options: {
-      chart: {
-        width: 300
-      },
-      legend: {
-        position: 'bottom'
-      }
+      width: 300
+    },
+    legend: {
+      position: 'bottom'
     }
-  }]
-  };
-
-  var chart = new ApexCharts(document.querySelector("#chart1"), options2);
-  chart.render();
-
-  // tooltips
-
-  const mediaQuery = window.matchMedia('(min-width: 657px)')
-
-  if (mediaQuery.matches) {
-    tippy('#opt1', {
-      content: 'Agregar dinero',
-      placement: 'right',
-    });
-  
-    tippy('#opt2', {
-      content: 'Registrar gasto',
-      placement: 'right',
-    });
-  
-    tippy('#opt3', {
-      content: 'Agregar ahorros',
-      placement: 'right',
-    });
-  
-    tippy('#opt4', {
-      content: 'Retirar ahorros',
-      placement: 'right',
-    });
-  
-    tippy('#mov', {
-      content: 'Últimos movimientos',
-      placement: 'right',
-    });
-  } else {
-    tippy('#opt1', {
-      content: 'Agregar dinero',
-      placement: 'top',
-    });
-  
-    tippy('#opt2', {
-      content: 'Registrar gasto',
-      placement: 'top',
-    });
-  
-    tippy('#opt3', {
-      content: 'Agregar ahorros',
-      placement: 'top',
-    });
-  
-    tippy('#opt4', {
-      content: 'Retirar ahorros',
-      placement: 'top',
-    });
-  
-    tippy('#mov', {
-      content: 'Últimos movimientos',
-      placement: 'top',
-    });
   }
+}]
+};
+options2.series = current[0].series2
+var chart1 = new ApexCharts(document.querySelector("#chart1"), options2);
+chart1.render();
+
+// tooltips
+
+const mediaQuery = window.matchMedia('(min-width: 657px)')
+
+if (mediaQuery.matches) {
+  tippy('#opt1', {
+    content: 'Agregar dinero',
+    placement: 'right',
+  });
+
+  tippy('#opt2', {
+    content: 'Registrar gasto',
+    placement: 'right',
+  });
+
+  tippy('#opt3', {
+    content: 'Agregar ahorros',
+    placement: 'right',
+  });
+
+  tippy('#opt4', {
+    content: 'Retirar ahorros',
+    placement: 'right',
+  });
+
+  tippy('#mov', {
+    content: 'Últimos movimientos',
+    placement: 'right',
+  });
+} else {
+  tippy('#opt1', {
+    content: 'Agregar dinero',
+    placement: 'top',
+  });
+
+  tippy('#opt2', {
+    content: 'Registrar gasto',
+    placement: 'top',
+  });
+
+  tippy('#opt3', {
+    content: 'Agregar ahorros',
+    placement: 'top',
+  });
+
+  tippy('#opt4', {
+    content: 'Retirar ahorros',
+    placement: 'top',
+  });
+
+  tippy('#mov', {
+    content: 'Últimos movimientos',
+    placement: 'top',
+  });
+}
