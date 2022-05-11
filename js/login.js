@@ -119,7 +119,6 @@ function login(){
     if(users.some((el) => el.username === username && el.password === password)){
         document.location.href = 'home.html';
         localStorage.setItem('username', username);
-        localStorage.setItem('password', password);
 
         currentUser(users, username);
         let resultJS = JSON.stringify(result);
@@ -128,7 +127,6 @@ function login(){
     }else if((usuarios.some((el) => el.username === username && el.password === password))){
         document.location.href = 'home.html';
         localStorage.setItem('username', username);
-        localStorage.setItem('password', password);
 
         currentUser(users, username);
         let resultJS = JSON.stringify(result);
@@ -178,7 +176,6 @@ function mostrarLogin(num){
 let username = localStorage.getItem('username');
 
 document.getElementById("user").value = localStorage.getItem("username");
-document.getElementById("pass").value = localStorage.getItem("password");
 
 newAccBtn.onclick = () => {mostrarLogin('2');};
 accCreated.onclick = () => {mostrarLogin('1');};
