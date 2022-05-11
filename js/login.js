@@ -176,7 +176,6 @@ function mostrarLogin(num){
 }
 
 let username = localStorage.getItem('username');
-let password = localStorage.getItem('password');
 
 document.getElementById("user").value = localStorage.getItem("username");
 document.getElementById("pass").value = localStorage.getItem("password");

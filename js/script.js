@@ -6,6 +6,9 @@ let opt2 = document.getElementById('opt2');
 let opt3 = document.getElementById('opt3');
 let opt4 = document.getElementById('opt4');
 let opt5 = document.getElementById('mov');
+let opt6 = document.getElementById('opt6');
+let buttonNo = document.getElementById('buttonNo');
+let buttonSi = document.getElementById('buttonSi');
 let saldo = 0;
 let ahorro = 0;
 let fecha;
@@ -14,6 +17,7 @@ let detalleGasto;
 let detalleIngreso;
 let detalleAhorro;
 let detalleAhorroRetiro;
+let salirAlert = document.getElementById('salirAdvertencia');
 let movimientos = [];
 let result = localStorage.getItem('CuentaAbierta');
 let current = JSON.parse(result);
@@ -261,6 +265,15 @@ opt4.onclick = () => {
 }
 opt5.onclick = () => {
     mostrarDiv('5');
+}
+opt6.onclick = () => {
+    salirAlert.style.display='flex';
+}
+buttonSi.onclick = () => {
+    document.location.href = 'index.html';
+}
+buttonNo.onclick = () => {
+    salirAlert.style.display='none';
 }
 
 document.getElementById('agregarBtn').onclick = function(e){

@@ -76,5 +76,15 @@
         #ceroMovimientos{
             padding: 0;
         }
+        .salirAdvertencia{
+            .cuadro{
+                width: 70%;
+                .botonera{
+                    button{
+                        width: 60px;
+                    }
+                }
+            }
+        }
     }
 }

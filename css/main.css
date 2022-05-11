@@ -227,6 +227,53 @@ body {
     text-align: center; }
     body #ceroMovimientos p {
       margin: 0 15px; }
+  body .salirAdvertencia {
+    color: black;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none; }
+    body .salirAdvertencia .cuadro {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #fafafa;
+      width: 40%;
+      height: auto;
+      padding: 30px;
+      text-align: center;
+      border-radius: 5px; }
+      body .salirAdvertencia .cuadro img {
+        filter: invert(33%) sepia(55%) saturate(1686%) hue-rotate(172deg) brightness(93%) contrast(102%);
+        width: 80px;
+        margin-bottom: 10px; }
+      body .salirAdvertencia .cuadro p {
+        font-size: 1.25em;
+        margin-bottom: 10px; }
+      body .salirAdvertencia .cuadro .botonera {
+        display: flex;
+        justify-content: space-around; }
+        body .salirAdvertencia .cuadro .botonera button {
+          width: 90px;
+          font-family: 'Montserrat', sans-serif;
+          background-color: #0077b6;
+          font-weight: 600;
+          cursor: pointer;
+          border-radius: 5px;
+          padding: 10px 20px;
+          border: none;
+          margin: 0 20px;
+          color: white; }
+          body .salirAdvertencia .cuadro .botonera button:hover {
+            background-color: #0096c7;
+            color: white; }
 
 #chart, #chart1 {
   max-width: 300px;
@@ -387,7 +434,11 @@ body .videoContainer #myVideo {
       body .tablaMovimientos th, body .tablaMovimientos td {
         padding: 2px; }
     body #ceroMovimientos {
-      padding: 0; } }
+      padding: 0; }
+    body .salirAdvertencia .cuadro {
+      width: 70%; }
+      body .salirAdvertencia .cuadro .botonera button {
+        width: 60px; } }
 
 body {
   background-color: #fafafa;

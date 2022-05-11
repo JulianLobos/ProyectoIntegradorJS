@@ -277,6 +277,61 @@ body{
             margin: 0 15px;
         }
     }
+
+    .salirAdvertencia{
+        color: black;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        display: none;
+        .cuadro{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: $color-fondo;
+            width: 40%;
+            height: auto;
+            padding: 30px;
+            text-align: center;
+            border-radius: 5px;
+            img{
+                filter: invert(33%) sepia(55%) saturate(1686%) hue-rotate(172deg) brightness(93%) contrast(102%);
+                width: 80px;
+                margin-bottom: 10px;
+            }
+            p{
+                font-size: 1.25em;
+                margin-bottom: 10px;
+            }
+            .botonera{
+                display: flex;
+                justify-content: space-around;
+                button{
+                    width: 90px;
+                    font-family: 'Montserrat', sans-serif;
+                    background-color: $color-principal;
+                    font-weight: 600;
+                    cursor: pointer;
+                    border-radius: 5px;
+                    padding: 10px 20px;
+                    border: none;
+                    margin: 0 20px;
+                    color: white;
+                    &:hover{
+                        background-color: $color-secundario;
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
 }
 
 #chart, #chart1 {

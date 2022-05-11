@@ -95,6 +95,11 @@ if (mediaQuery.matches) {
     content: 'Últimos movimientos',
     placement: 'right',
   });
+
+  tippy('#opt6', {
+    content: 'Salir',
+    placement: 'right',
+  });
 } else {
   tippy('#opt1', {
     content: 'Agregar dinero',
@@ -118,6 +123,11 @@ if (mediaQuery.matches) {
 
   tippy('#mov', {
     content: 'Últimos movimientos',
+    placement: 'top',
+  });
+
+  tippy('#opt6', {
+    content: 'Salir',
     placement: 'top',
   });
 }
