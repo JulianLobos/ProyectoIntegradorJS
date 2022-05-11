@@ -24,9 +24,6 @@ let current = JSON.parse(result);
 let fechaGenerada = [];
 if(current[0].movimientos != []){
     movimientos = current[0].movimientos;
-    for(let i of movimientos){
-        i.estado = false;
-    }
 }
 if(current[0].saldo != 0){
     saldo = current[0].saldo;
@@ -70,15 +67,8 @@ function alertaErr(){
 }
 
 function generadorFecha(){
-    fechaGenerada = [];
-    let generador = new Date;
-    fechaGenerada += generador.getDate() + "/";
-    fechaGenerada += generador.getMonth()+1 + "/";
-    fechaGenerada += generador.getFullYear();
-    fechaGenerada += " ";
-    fechaGenerada += generador.getHours() + ":";
-    fechaGenerada += generador.getMinutes() + " hs";
-    return fechaGenerada;
+    const now = new Date().toLocaleString();
+    return now;
 }
 
 //  Hago la desestructuración del objeto current para sacar el nombre y apellido de la persona que ingresó
@@ -111,16 +101,11 @@ function ultMovimientos(){
         document.getElementById('div5').style.display='none';
         document.getElementById('ceroMovimientos').style.display='flex'
     }
-    for(let i of movimientos){
-        i.estado = false;
-    }
     function listaMovimientos(movimientos){
+        tabla.innerHTML = "<tr><th>Fecha</th><th>Tipo</td><th>Monto</th><td>Categoría</th><th>Detalle</th></tr>";
         for(let i of movimientos) {
-            if (i.estado == false) {
-                tabla.innerHTML += "<tr><td>" + i.fecha + "</td><td>" + i.tipo + "</td><td>" + i.monto + "</td><td>" + i.categoria + "</td><td>"+ i.detalle +"</td></tr>";
-                // el estado es para que declarar que ya está visible en la tabla de movimientos y para que no se muestre repetidamente.
-                i.estado = true;
-            }
+            tabla.innerHTML += "<tr><td>" + i.fecha + "</td><td>" + i.tipo + "</td><td>" + i.monto + "</td><td>" + i.categoria + "</td><td>"+ i.detalle +"</td></tr>";
+                
         }
     }
     listaMovimientos(movimientos);
@@ -142,7 +127,6 @@ function retirar(){
             tipo: 'Gasto',
             monto: "$"+number,
             detalle: detalleGasto,
-            estado: false,
         })
         current[0].movimientos = movimientos;
         if(categoria == 'Compras'){
@@ -189,7 +173,6 @@ function ahorros(){
             tipo: 'Aumento de ahorros',
             monto: "$"+number,
             detalle: detalleAhorro,
-            estado: false,
         })
         current[0].movimientos = movimientos;
         guardarDatos();
@@ -222,7 +205,6 @@ function restarAhorros(){
             tipo: 'Retiro de ahorros',
             monto: "$"+number,
             detalle: detalleAhorroRetiro,
-            estado: false,
         })
         current[0].movimientos = movimientos;
         guardarDatos();
@@ -312,7 +294,6 @@ document.getElementById('agregarAhorroBtn').onclick = function(e){
             tipo: 'Ingreso',
             monto: "$"+ (number - (number * (ahorros/100))),
             detalle: detalleIngreso,
-            estado: false,
         })
         current[0].saldo += number - (number * (ahorros/100));
         let ingreso = number - (number * (ahorros/100));
@@ -339,7 +320,6 @@ document.getElementById('agregarAhorroBtn').onclick = function(e){
                 tipo: 'Ingreso',
                 monto: "$"+ (number * (ahorros/100)),
                 detalle: "Porcentaje de ahorro ingresado desde "+ categoria,
-                estado: false,
             })
             current[0].ahorro += number * (ahorros/100);
         }
