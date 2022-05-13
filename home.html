@@ -26,6 +26,78 @@
         </div>
     </header>
 
+    <div class="cotizadorDolar" id="cotizadorDolar">
+        <img src="img/bills.png" alt="billetes de dolar"><p>Cotización del dólar</p>
+    </div>
+
+    <div id="cotizadorVentana" class="cotizadorVentana">
+        <div class="ventana">
+            <img src="img/cerrar.svg" id="cerrarConversor" alt="cerrar icono">
+            <p class="tituloVentana">Cotización del dólar</p>
+            <p class="dolarOficial">Dolar Oficial:</p>
+            <div class="preciosDolarOficial">
+                <div class="compra">
+                    <p>Compra</p>
+                    <div class="price"><p>$</p><p id="dolarOficialCompra"></p></div>
+                </div>
+                <div class="venta">
+                    <p>Venta</p>
+                    <div class="price"><p>$</p><p id="dolarOficialVenta"></p></div>
+                </div>
+            </div>
+            <p class="dolarBlue">Dolar Blue:</p>
+            <div class="preciosDolarBlue">
+                <div class="compra">
+                    <p>Compra</p>
+                    <div class="price"><p>$</p><p id="dolarBlueCompra"></p></div>
+                </div>
+                <div class="venta">
+                    <p>Venta</p>
+                    <div class="price"><p>$</p><p id="dolarBlueVenta"></p></div>
+                </div>
+            </div>
+            <p class="conversorDivisas">Conversor</p>
+            <div class="botonesCambiar">
+                <button id="pesoADolarBtn">Peso a Dólar</button>
+                <button id="dolarAPesoBtn">Dólar a Peso</button>
+            </div>
+            <div class="cambio" id="cambio1">
+                <div class="seleccion">
+                    <p>Pesos a</p>
+                    <select name="pesoADolar" id="pesoADolar">
+                        <option value="DolarOficialCompra">Dólar Oficial (Compra)</option>
+                        <option value="DolarOficialVenta">Dólar Oficial (Venta)</option>
+                        <option value="DolarBlueCompra">Dólar Blue (Compra)</option>
+                        <option value="DolarBlueVenta">Dólar Blue (Venta)</option>
+                    </select>
+                </div>
+                <div class="conversion">
+                    <p>Ingrese una cantidad en pesos Argentinos:</p>
+                    <input type="number" placeholder="Pesos Argentinos" id="fromPesosArgentinos">
+                    <p>Dólares:</p>
+                    <input type="number" disabled id="toDolares">
+                </div>
+            </div>
+            <div class="cambio" id="cambio2">
+                <div class="seleccion">
+                    <select name="dolarAPeso" id="dolarAPeso">
+                        <option value="DolarOficialCompra">Dólar Oficial (Compra)</option>
+                        <option value="DolarOficialVenta">Dólar Oficial (Venta)</option>
+                        <option value="DolarBlueCompra">Dólar Blue (Compra)</option>
+                        <option value="DolarBlueVenta">Dólar Blue (Venta)</option>
+                    </select>
+                    <p>a Pesos</p>
+                </div>
+                <div class="conversion">
+                    <p>Ingrese una cantidad en Dólares Estadounidenses:</p>
+                    <input type="number" placeholder="Dólares Estadounidenses" id="fromDolares">
+                    <p>Pesos Argentinos:</p>
+                    <input type="number" disabled id="toPesosArgentinos">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="navBar">
         <div class="option" id="opt1">
             <img src="img/plus-solid.svg" alt="icono suma">
@@ -89,7 +161,7 @@
             </select>
             <label for="detalleGasto">Agregue detalles (Opcional)</label>
             <input type="text" name="detalleGasto" id="detalleGasto">
-            <input type="submit" id="retirarBtn" value="Retirar" class="inputBtn">
+            <input type="submit" id="retirarBtn" value="Registrar" class="inputBtn">
             <p class="mensajeError" id="mensajeError3">Usted no tiene esa cantidad.</p>
         </form>
     </div>

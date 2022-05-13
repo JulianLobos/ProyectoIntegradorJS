@@ -23,6 +23,28 @@
                 border-radius: 15px;
             }
         }
+        .cotizadorDolar{
+            padding: 0;
+            margin: 10px;
+        }
+
+        .cotizadorVentana{
+            .ventana{
+                padding: 15px 0;
+                width: 320px;
+                img{
+                    width: 25px;
+                    top: -7px;
+                    right: -43%;
+                }
+                .botonesCambiar{
+                    button{
+                        padding: 5px 10px;
+                        margin: 5px;
+                    }
+                }
+            }
+        }
         .navBar{
             all: unset;
             background-color: $color-principal;

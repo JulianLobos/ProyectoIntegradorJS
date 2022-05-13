@@ -1,30 +1,24 @@
 [
     {
-        "fecha": "15/03/2022 21:00hs", 
-        "tipo": "Gasto", 
-        "categoria": "Compras", 
-        "monto": "15000", 
-        "detalle": "Hice las compras del mes."
+        "username": "julian",
+        "password": "lobos",
+        "nombre": "Julian",
+        "apellido": "Lobos",
+        "saldo": 0,
+        "ahorro": 0,
+        "movimientos": [],
+        "series": [0, 0, 0, 0, 0, 0],
+        "series2": [0, 0, 0, 0, 0, 0, 0]
     },
     {
-        "fecha": "24/03/2022 20:24hs", 
-        "tipo": "Aumento de ahorros", 
-        "categoria": "Ahorro", 
-        "monto": "10000", 
-        "detalle": "Ahorro para viaje"
-    },
-    {
-        "fecha": "07/04/2022 15:07hs", 
-        "tipo": "Gasto", 
-        "categoria": "Alquiler", 
-        "monto": "45000", 
-        "detalle": "Pagué el alquiler"
-    },
-    {
-        "fecha": "25/04/2022 20:54hs", 
-        "tipo": "Aumento de ahorros", 
-        "categoria": "Ahorro", 
-        "monto": "4000", 
-        "detalle": "Ahorro para celular"
+        "username": "julian96",
+        "password": "lobos",
+        "nombre": "Julian",
+        "apellido": "Lobos",
+        "saldo": 0,
+        "ahorro": 0,
+        "movimientos": [],
+        "series": [0, 0, 0, 0, 0, 0],
+        "series2": [0, 0, 0, 0, 0, 0, 0]
     }
 ]

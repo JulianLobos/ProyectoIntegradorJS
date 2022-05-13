@@ -1,3 +1,4 @@
+let dolarInfo;
 let saldoHtml = document.getElementById('saldo');
 let ahorroHtml = document.getElementById('ahorros')
 let tabla = document.getElementById('table');
@@ -9,6 +10,24 @@ let opt5 = document.getElementById('mov');
 let opt6 = document.getElementById('opt6');
 let buttonNo = document.getElementById('buttonNo');
 let buttonSi = document.getElementById('buttonSi');
+let dolarOficialCompra = document.getElementById('dolarOficialCompra');
+let dolarOficialVenta = document.getElementById('dolarOficialVenta');
+let dolarBlueCompra = document.getElementById('dolarBlueCompra');
+let dolarBlueVenta = document.getElementById('dolarBlueVenta');
+let pesoADolarValor = document.getElementById('pesoADolar');
+let dolarAPesoValor = document.getElementById('dolarAPeso');
+let fromPesosArgentinos = document.getElementById('fromPesosArgentinos');
+let toDolares = document.getElementById('toDolares');
+let fromDolares = document.getElementById('fromDolares');
+let toPesosArgentinos = document.getElementById('toPesosArgentinos');
+let usdOficialCompra;
+let usdOficialVenta;
+let usdBlueCompra;
+let usdBlueVenta;
+let pesoADolarBtn = document.getElementById('pesoADolarBtn');
+let dolarAPesoBtn = document.getElementById('dolarAPesoBtn');
+let cerrarConversor = document.getElementById('cerrarConversor');
+let cotizadorDolar = document.getElementById('cotizadorDolar');
 let saldo = 0;
 let ahorro = 0;
 let fecha;
@@ -34,6 +53,75 @@ if(current[0].ahorro != 0){
     ahorroHtml.innerHTML = ahorro;
 }
 
+function cotizarDolar(){
+    dolarOficialCompra.innerHTML = dolarInfo[0].casa.compra;
+    dolarOficialVenta.innerHTML = dolarInfo[0].casa.venta;
+    dolarBlueCompra.innerHTML = dolarInfo[1].casa.compra;
+    dolarBlueVenta.innerHTML = dolarInfo[1].casa.venta;
+}
+
+///////////////////     Funcion para cambiar la coma por un punto en los string de la api     /////////////////////
+
+function coma(x){
+    let numeroParseado = '';
+    for(let letter of x){
+        if(letter == ','){
+            numeroParseado += '.'
+        }else{
+            numeroParseado += letter;
+        }
+    }
+    return parseFloat(numeroParseado);
+}
+
+
+///////////////////     traigo los precios del dolar desde una api     ///////////////////
+fetch('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);
+        dolarInfo = data;
+        cotizarDolar();
+        usdOficialCompra = coma(dolarInfo[0].casa.compra);
+        usdOficialVenta = coma(dolarInfo[0].casa.venta);
+        usdBlueCompra = coma(dolarInfo[1].casa.compra);
+        usdBlueVenta = coma(dolarInfo[1].casa.venta);
+    });
+
+///////////////////     Funciones de cálculo para el conversor     ///////////////////
+
+function pesoADolar(){
+    if(pesoADolarValor.value == 'DolarOficialCompra'){
+        let resultado = fromPesosArgentinos.value / usdOficialCompra;
+        toDolares.value = resultado;
+    } else if(pesoADolarValor.value == 'DolarOficialVenta'){
+        let resultado = fromPesosArgentinos.value / usdOficialVenta;
+        toDolares.value = resultado;
+    } else if(pesoADolarValor.value == 'DolarBlueCompra'){
+        let resultado = fromPesosArgentinos.value / usdBlueCompra;
+        toDolares.value = resultado;
+    } else if(pesoADolarValor.value == 'DolarBlueVenta'){
+        let resultado = fromPesosArgentinos.value / usdBlueVenta;
+        toDolares.value = resultado;
+    }
+}
+
+function dolarAPeso(){
+    if(dolarAPesoValor.value == 'DolarOficialCompra'){
+        let resultado = fromDolares.value * usdOficialCompra;
+        toPesosArgentinos.value = resultado;
+    } else if(dolarAPesoValor.value == 'DolarOficialVenta'){
+        let resultado = fromDolares.value * usdOficialVenta;
+        toPesosArgentinos.value = resultado;
+    } else if(dolarAPesoValor.value == 'DolarBlueCompra'){
+        let resultado = fromDolares.value * usdBlueCompra;
+        toPesosArgentinos.value = resultado;
+    } else if(dolarAPesoValor.value == 'DolarBlueVenta'){
+        let resultado = fromDolares.value * usdBlueVenta;
+        toPesosArgentinos.value = resultado;
+    }
+}
+
 ///////////////////     Funciones de la librería toastify     ///////////////////
 function alertaExito(){
         Toastify({
@@ -50,6 +138,7 @@ function alertaExito(){
             onClick: function(){}
             }).showToast();
 }
+
 function alertaErr(){
     Toastify({
         text: "Error! Verifique los datos ingresados",
@@ -348,3 +437,30 @@ document.getElementById('restarAhorrosBtn').onclick = function(e){
 }
 
 infoContacto();
+
+fromPesosArgentinos.onchange = () => {
+    pesoADolar();
+}
+pesoADolarValor.onchange = () => {
+    pesoADolar();
+}
+fromDolares.onchange = () => {
+    dolarAPeso();
+}
+dolarAPesoValor.onchange = () => {
+    dolarAPeso();
+}
+pesoADolarBtn.onclick = () => {
+    document.getElementById('cambio1').style.display="block";
+    document.getElementById('cambio2').style.display="none";
+}
+dolarAPesoBtn.onclick = () => {
+    document.getElementById('cambio2').style.display="block";
+    document.getElementById('cambio1').style.display="none";
+}
+cerrarConversor.onclick = () => {
+    document.getElementById('cotizadorVentana').style.display="none"
+}
+cotizadorDolar.onclick = () => {
+    document.getElementById('cotizadorVentana').style.display="flex"
+}

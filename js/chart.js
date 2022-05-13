@@ -1,18 +1,4 @@
 let tablas = document.getElementById('table');
-let datos;
-
-//traigo los datos del JSON y los inserto en la tabla de movimientos.
-fetch('http://localhost:5500/datos.json')
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      datos = data;
-      function datosTabla(){
-        datos.forEach(element => 
-            tablas.innerHTML += "<tr><td>" + element.fecha + "</td><td>" + element.tipo + "</td><td>" + element.monto + "</td><td>" + element.categoria + "</td><td>"+ element.detalle +"</td></tr>");
-      }
-      datosTabla()
-    });
 
 // Chart
 
@@ -24,6 +10,7 @@ var options = {
         foreColor: '#000',
   },
   labels: ['Compras', 'Alquiler', 'Educación', 'Suscripciones', 'Impuestos', 'Otros'],
+  colors:['#ffbe0b', '#fb5607', '#ff006e', '#8338ec', '#3a86ff', '#8ac926'],
   responsive: [{
     breakpoint: 480,
     options: {
@@ -50,6 +37,7 @@ var options2 = {
       foreColor: '#000',
 },
 labels: ['Sueldo', 'Freelance', 'Donación', 'Venta', 'Trabajo Extra', 'Préstamo', 'Otro'],
+colors:['#ff595e', '#ffca3a', '#8ac926', '#1982c4', '#6a4c93', '#a8201a', '#4f772d'],
 responsive: [{
   breakpoint: 480,
   options: {
