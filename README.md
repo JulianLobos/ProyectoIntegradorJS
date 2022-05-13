@@ -6,6 +6,8 @@ Digital Wallet es una aplicación que se creó para ser usada como una libreta d
 
 💲 Registrar los ingresos que obtenemos, indicando la categoría del ingreso y agregando un comentario o detalle.
 
+💸 Anotar y catalogar nuestros gastos.
+
 💰 También podemos llevar seguimiento de nuestros ahorros.
 
 📊 Podremos visualizar las estadísticas de nuestros gastos e ingresos, separados por categorías.
