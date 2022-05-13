@@ -548,4 +548,7 @@ body .videoContainer #myVideo {
 
 body {
   background-color: #fafafa;
+  background-image: url("../img/bg-principal.webp");
+  background-repeat: repeat;
+  object-fit: cover;
   font-family: 'Montserrat', sans-serif; }

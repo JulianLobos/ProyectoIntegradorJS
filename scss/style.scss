@@ -11,5 +11,8 @@
 
 body{
     background-color: $color-fondo;
+    background-image: url('../img/bg-principal.webp');
+    background-repeat: repeat;
+    object-fit: cover;
     font-family: 'Montserrat', sans-serif;
 }
