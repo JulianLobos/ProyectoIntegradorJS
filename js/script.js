@@ -69,18 +69,20 @@ function coma(x){
     return parseFloat(numeroParseado);
 }
 
-
 ///////////////////     traigo los precios del dolar desde una api     ///////////////////
 fetch('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
-    .then((response) => response.json())
-    .then((data) => {
-        dolarInfo = data;
-        cotizarDolar();
-        usdOficialCompra = coma(dolarInfo[0].casa.compra);
-        usdOficialVenta = coma(dolarInfo[0].casa.venta);
-        usdBlueCompra = coma(dolarInfo[1].casa.compra);
-        usdBlueVenta = coma(dolarInfo[1].casa.venta);
-    });
+.then((response) => response.json())
+.then((data) => {
+    dolarInfo = data;
+    cotizarDolar();
+    usdOficialCompra = coma(dolarInfo[0].casa.compra);
+    usdOficialVenta = coma(dolarInfo[0].casa.venta);
+    usdBlueCompra = coma(dolarInfo[1].casa.compra);
+    usdBlueVenta = coma(dolarInfo[1].casa.venta);
+})
+.catch ( (error) => {
+    alertaErrCotizacion();
+});
 
 ///////////////////     Funciones de cálculo para el conversor     ///////////////////
 
@@ -141,6 +143,22 @@ function alertaErr(){
         close: true,
         gravity: "top", 
         position: "right", 
+        stopOnFocus: true, 
+        style: {
+            background: "#d00000",
+        },
+        onClick: function(){} 
+        }).showToast();
+}
+
+function alertaErrCotizacion(){
+    Toastify({
+        text: "No se pudo obtener la cotización. Intente más tarde.",
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "top", 
+        position: "center", 
         stopOnFocus: true, 
         style: {
             background: "#d00000",
@@ -457,6 +475,7 @@ dolarAPesoBtn.onclick = () => {
 cerrarConversor.onclick = () => {
     document.getElementById('cotizadorVentana').style.display="none"
 }
+
 cotizadorDolar.onclick = () => {
     document.getElementById('cotizadorVentana').style.display="flex"
 }
