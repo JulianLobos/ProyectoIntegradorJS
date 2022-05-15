@@ -1,4 +1,5 @@
-let dolarInfo;
+let agregarDineroBtn = document.getElementById('agregarBtn');
+let agregarAhorroBtn = document.getElementById('agregarAhorroBtn');
 let saldoHtml = document.getElementById('saldo');
 let ahorroHtml = document.getElementById('ahorros')
 let tabla = document.getElementById('table');
@@ -20,27 +21,21 @@ let fromPesosArgentinos = document.getElementById('fromPesosArgentinos');
 let toDolares = document.getElementById('toDolares');
 let fromDolares = document.getElementById('fromDolares');
 let toPesosArgentinos = document.getElementById('toPesosArgentinos');
-let usdOficialCompra;
-let usdOficialVenta;
-let usdBlueCompra;
-let usdBlueVenta;
 let pesoADolarBtn = document.getElementById('pesoADolarBtn');
 let dolarAPesoBtn = document.getElementById('dolarAPesoBtn');
 let cerrarConversor = document.getElementById('cerrarConversor');
 let cotizadorDolar = document.getElementById('cotizadorDolar');
+let salirAlert = document.getElementById('salirAdvertencia');
+let dolarInfo;
+let usdOficialCompra;
+let usdOficialVenta;
+let usdBlueCompra;
+let usdBlueVenta;
 let saldo = 0;
 let ahorro = 0;
-let fecha;
-let categoria;
-let detalleGasto;
-let detalleIngreso;
-let detalleAhorro;
-let detalleAhorroRetiro;
-let salirAlert = document.getElementById('salirAdvertencia');
 let movimientos = [];
 let result = localStorage.getItem('CuentaAbierta');
 let current = JSON.parse(result);
-let fechaGenerada = [];
 if(current[0].movimientos != []){
     movimientos = current[0].movimientos;
 }
@@ -79,7 +74,6 @@ function coma(x){
 fetch('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
     .then((response) => response.json())
     .then((data) => {
-        console.log(data);
         dolarInfo = data;
         cotizarDolar();
         usdOficialCompra = coma(dolarInfo[0].casa.compra);
@@ -201,14 +195,14 @@ function ultMovimientos(){
 }
 
 function retirar(){
-    categoria = document.getElementById('tipoGasto').value;
+    let categoria = document.getElementById('tipoGasto').value;
     number = +document.getElementById('retirarSaldo').value;
-    detalleGasto = document.getElementById('detalleGasto').value;
+    let detalleGasto = document.getElementById('detalleGasto').value;
     if(number <= saldo && number > 0){
         saldo -= number;
         saldoHtml.innerHTML = saldo;
         document.getElementById('retirarSaldo').value = "";
-        fecha = generadorFecha();
+        let fecha = generadorFecha();
         current[0].saldo -= number;
         movimientos.unshift({
             fecha: fecha,
@@ -246,14 +240,14 @@ function retirar(){
 
 function ahorros(){
     number = +document.getElementById('sumarAhorros').value;
-    detalleAhorro = document.getElementById('detalleAhorro').value;
+    let detalleAhorro = document.getElementById('detalleAhorro').value;
     if(number <= saldo && number > 0){
         ahorro += number;
         saldo -= number;
         saldoHtml.innerHTML = saldo;
         ahorroHtml.innerHTML = ahorro;
         document.getElementById('sumarAhorros').value = 0;
-        fecha = generadorFecha();
+        let fecha = generadorFecha();
         current[0].ahorro += number;
         current[0].saldo -= number;
         movimientos.unshift({
@@ -277,7 +271,7 @@ function ahorros(){
 }
 
 function restarAhorros(){
-    detalleAhorroRetiro = document.getElementById('detalleAhorroRetiro').value;
+    let detalleAhorroRetiro = document.getElementById('detalleAhorroRetiro').value;
     number = +document.getElementById('restarAhorros').value;
     if(number <= ahorro && number > 0){
         saldo += number;
@@ -287,7 +281,7 @@ function restarAhorros(){
         current[0].saldo += number;
         current[0].ahorro -= number;
         document.getElementById('restarAhorros').value = 0;
-        fecha = generadorFecha();
+        let fecha = generadorFecha();
         movimientos.unshift({
             fecha: fecha,
             categoria: "Ahorro",
@@ -347,7 +341,7 @@ buttonNo.onclick = () => {
     salirAlert.style.display='none';
 }
 
-document.getElementById('agregarBtn').onclick = function(e){
+agregarDineroBtn.onclick = function(e){
     e.preventDefault()
     number = +document.getElementById('agregarSaldo').value;
     if(number > 0){
@@ -362,11 +356,11 @@ document.getElementById('agregarBtn').onclick = function(e){
     }
 }
 
-document.getElementById('agregarAhorroBtn').onclick = function(e){
+agregarAhorroBtn.onclick = function(e){
     e.preventDefault()
     let ahorros = +document.getElementById('agregarAhorros').value;
-    categoria = document.getElementById('tipoIngreso').value;
-    detalleIngreso = document.getElementById('detalleIngreso').value;
+    let categoria = document.getElementById('tipoIngreso').value;
+    let detalleIngreso = document.getElementById('detalleIngreso').value;
     if(ahorros >= 0 && ahorros <= 100){
         ahorro += number * (ahorros/100);
         saldo += number - (number * (ahorros/100));
@@ -376,7 +370,7 @@ document.getElementById('agregarAhorroBtn').onclick = function(e){
         document.getElementById('agregarSaldo').value = "";
         document.getElementById('detalleIngreso').value = "";
         document.getElementById('agregarForm2').style.display= "none";
-        fecha = generadorFecha();
+        let fecha = generadorFecha();
         movimientos.unshift({
             fecha: fecha,
             categoria: categoria,
@@ -437,6 +431,8 @@ document.getElementById('restarAhorrosBtn').onclick = function(e){
 }
 
 infoContacto();
+
+///////////////     Funciones del conversor     ///////////////
 
 fromPesosArgentinos.onchange = () => {
     pesoADolar();

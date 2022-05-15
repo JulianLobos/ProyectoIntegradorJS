@@ -1,5 +1,3 @@
-ingreso = false;
-menu = true;
 let newAccBtn = document.getElementById('newAccount');
 let accCreated = document.getElementById('accCreated');
 let hasAcc = document.getElementById('hasAcc');
@@ -9,41 +7,9 @@ let bandera = false;
 let result;
 let usuariosJSON = localStorage.getItem('usuarios')
 let usuarios = JSON.parse(usuariosJSON);
-let users = [
-    {
-        username: 'julian',
-        password: 'lobos',
-        nombre: 'Julian',
-        apellido: 'Lobos',
-        saldo: 0,
-        ahorro: 0,
-        movimientos: [],
-        series: [0, 0, 0, 0, 0, 0],
-        series2: [0, 0, 0, 0, 0, 0, 0],
-    },
-    {
-        username: 'user',
-        password: 'user',
-        nombre: 'Sin',
-        apellido: 'Nombre',
-        saldo: 0,
-        ahorro: 0,
-        movimientos: [],
-        series: [0, 0, 0, 0, 0, 0],
-        series2: [0, 0, 0, 0, 0, 0, 0],
-    },
-    {
-        username: 'wen',
-        password: 'mateos',
-        nombre: 'Wenceslao',
-        apellido: 'Mateos',
-        saldo: 0,
-        ahorro: 0,
-        movimientos: [],
-        series: [0, 0, 0, 0, 0, 0],
-        series2: [0, 0, 0, 0, 0, 0, 0],
-    }
-]
+let users = [];
+
+///////////////////     si hay usuarios guardados en el localStorage los almaceno en users     /////////////////
 
 if(usuarios != null){
     users = usuarios
@@ -74,7 +40,7 @@ function alertaErr(btn){
     btn.addEventListener('click', () => {
         if (bandera == false){
             Toastify({
-                text: "Error! Completa todos los campos",
+                text: "Error! Verifique los datos ingresados",
                 duration: 3000,
                 newWindow: true,
                 close: true,
@@ -124,13 +90,6 @@ function login(){
         let resultJS = JSON.stringify(result);
         localStorage.setItem('CuentaAbierta', resultJS);
 
-    }else if((usuarios.some((el) => el.username === username && el.password === password))){
-        document.location.href = 'home.html';
-        localStorage.setItem('username', username);
-
-        currentUser(users, username);
-        let resultJS = JSON.stringify(result);
-        localStorage.setItem('CuentaAbierta', resultJS);        
     }else{
         errorInicio();
         document.getElementById('errorText').style.display='block';
@@ -143,28 +102,37 @@ function crear(){
     let newPass = document.getElementById('newPass').value;
     let newName = document.getElementById('newName').value;
     let newLastname = document.getElementById('newLastname').value;
-    if(newUser != '' && newPass != ''){
-        bandera = true;
-        users.unshift({
-            username: newUser,
-            password: newPass,
-            nombre: newName,
-            apellido: newLastname,
-            saldo: 0,
-            ahorro: 0,
-            movimientos: [],
-            series: [0, 0, 0, 0, 0, 0],
-            series2: [0, 0, 0, 0, 0, 0, 0],
-        });
-        usersString = JSON.stringify(users);
-        localStorage.setItem('usuarios', usersString);
-        document.getElementById('exitoText').style.display='block';
-        document.getElementById('errorText2').style.display='none';
-    }else{
+    //chequea si no hay otra cuenta con el mismo usuario
+    if(users.some((el) => el.username === newUser)){
         document.getElementById('exitoText').style.display='none';
-        document.getElementById('errorText2').style.display='block';
+        document.getElementById('errorText3').style.display='block';
         bandera = false;
+    }else{
+        if(newUser != '' && newPass != ''){
+            bandera = true;
+            users.unshift({
+                username: newUser,
+                password: newPass,
+                nombre: newName,
+                apellido: newLastname,
+                saldo: 0,
+                ahorro: 0,
+                movimientos: [],
+                series: [0, 0, 0, 0, 0, 0],
+                series2: [0, 0, 0, 0, 0, 0, 0],
+            });
+            usersString = JSON.stringify(users);
+            localStorage.setItem('usuarios', usersString);
+            document.getElementById('exitoText').style.display='block';
+            document.getElementById('errorText2').style.display='none';
+            document.getElementById('errorText3').style.display='none';
+        }else{
+            document.getElementById('exitoText').style.display='none';
+            document.getElementById('errorText2').style.display='block';
+            bandera = false;
+        }
     }
+    
 }
 
 function mostrarLogin(num){
@@ -182,5 +150,5 @@ accCreated.onclick = () => {mostrarLogin('1');};
 hasAcc.onclick = () => {mostrarLogin('1')};
 loginBtn.onclick = () => {login()};
 crearBtn.onclick = () => {crear()};
-alertaExito(crearBtn)
-alertaErr(crearBtn)
+alertaExito(crearBtn);
+alertaErr(crearBtn);

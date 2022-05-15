@@ -1,5 +1,3 @@
-let tablas = document.getElementById('table');
-
 // Chart
 
 var options = {
