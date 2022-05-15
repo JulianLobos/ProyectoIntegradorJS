@@ -1,4 +1,4 @@
-# ProyectoIntegradorJS
+# Digital Wallet
 
 Digital Wallet es una aplicación que se creó para ser usada como una libreta digital donde podemos anotar y llevar registro de nuestros ingresos, nuestros gastos y nuestros ahorros. La idea de este proyecto es que sea utilizado a la par de nuestras cuentas monetarias reales, muchas veces tenemos más de una cuenta o ingresos extras que no están reflejados en ningun lado. Con esta herramienta podemos anotarlos y tener toda nuestra información financiera en un solo lugar.
 
